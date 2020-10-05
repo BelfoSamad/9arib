@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/post_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/colorCard"
+    app:cardCornerRadius="32dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/author_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:src="@drawable/next"
+            app:layout_constraintBottom_toBottomOf="@id/post_time"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/post_author" />
+
+        <TextView
+            android:id="@+id/post_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="9adour"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/author_type"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/post_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="16:12"
+            android:textColor="@color/secondaryTextColor"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/post_author"
+            app:layout_constraintTop_toBottomOf="@id/post_author" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/hide"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Hide"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            app:backgroundTint="@color/colorAccent"
+            app:cornerRadius="32dp"
+            app:layout_constraintBottom_toBottomOf="@id/post_time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/post_author" />
+
+        <TextView
+            android:id="@+id/post_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="hey there, this is the first goddamn post, and it looks so fucking  good mate..."
+            android:textColor="@color/primaryTextColor"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/author_type"
+            app:layout_constraintTop_toBottomOf="@id/post_time" />
+
+        <ImageButton
+            android:id="@+id/upvote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@null"
+            android:src="@drawable/upvote"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/author_type"
+            app:layout_constraintTop_toBottomOf="@id/post_content" />
+
+        <TextView
+            android:id="@+id/upvotes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="123"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="@id/upvote"
+            app:layout_constraintStart_toEndOf="@id/upvote"
+            app:layout_constraintTop_toTopOf="@id/upvote" />
+
+        <ImageButton
+            android:id="@+id/downvote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@null"
+            android:src="@drawable/downvote"
+            app:layout_constraintBottom_toBottomOf="@id/upvote"
+            app:layout_constraintStart_toEndOf="@id/upvotes"
+            app:layout_constraintTop_toTopOf="@id/upvote" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:src="@drawable/views"
+            app:layout_constraintBottom_toBottomOf="@id/upvote"
+            app:layout_constraintEnd_toStartOf="@id/views"
+            app:layout_constraintTop_toTopOf="@id/upvote" />
+
+        <TextView
+            android:id="@+id/views"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="12k"
+            app:layout_constraintBottom_toBottomOf="@id/upvote"
+            app:layout_constraintEnd_toStartOf="@id/share"
+            app:layout_constraintTop_toTopOf="@id/upvote" />
+
+        <ImageButton
+            android:id="@+id/share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:background="@null"
+            android:src="@drawable/share"
+            app:layout_constraintBottom_toBottomOf="@id/upvote"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/upvote" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

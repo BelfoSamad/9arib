@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">9arib</string>
+
+    <!-- OnBoarding Titles/Description -->
+    <string-array name="boarding_titles">
+        <item>Hype 1</item>
+        <item>Hype 2</item>
+        <item>Hype 3</item>
+        <item>Hype 4</item>
+    </string-array>
+    <string-array name="boarding_descriptions">
+        <item>Hype 1 Description</item>
+        <item>Hype 2 Description</item>
+        <item>Hype 3 Description</item>
+        <item>Hype 4 Description</item>
+    </string-array>
+    <integer-array name="boarding_images">
+        <item>@drawable/ic_launcher_background</item>
+        <item>@drawable/ic_launcher_background</item>
+        <item>@drawable/ic_launcher_background</item>
+        <item>@drawable/ic_launcher_background</item>
+    </integer-array>
+
+</resources>

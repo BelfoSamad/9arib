@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/onBoardingFragment">
+
+    <fragment
+        android:id="@+id/onBoardingFragment"
+        android:name="com.belfoapps.qarib.views.fragments.OnBoardingFragment"
+        android:label="on_boarding_fragment"
+        tools:layout="@layout/on_boarding_fragment">
+        <action
+            android:id="@+id/next"
+            app:destination="@id/startFragment" />
+    </fragment>
+
+    <action
+        android:id="@+id/start"
+        app:destination="@id/feedFragment" />
+
+    <fragment
+        android:id="@+id/feedFragment"
+        android:name="com.belfoapps.qarib.views.fragments.FeedFragment"
+        android:label="feed_fragment"
+        tools:layout="@layout/feed_fragment">
+        <action
+            android:id="@+id/go_profile"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/go_post"
+            app:destination="@id/postFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.belfoapps.qarib.views.fragments.ProfileFragment"
+        android:label="profile_fragment"
+        tools:layout="@layout/profile_fragment" />
+    <fragment
+        android:id="@+id/postFragment"
+        android:name="com.belfoapps.qarib.views.fragments.PostFragment"
+        android:label="post_fragment"
+        tools:layout="@layout/post_fragment" />
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.belfoapps.qarib.views.fragments.StartFragment"
+        android:label="start_fragment"
+        tools:layout="@layout/start_fragment" />
+</navigation>
