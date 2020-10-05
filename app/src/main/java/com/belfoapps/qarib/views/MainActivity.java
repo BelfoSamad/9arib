@@ -33,4 +33,19 @@ public class MainActivity extends AppCompatActivity implements MainListener {
     public void start() {
         Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.next);
     }
+
+    @Override
+    public void feed() {
+        Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.start);
+    }
+
+    @Override
+    public void profile() {
+        Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.go_profile);
+    }
+
+    @Override
+    public void goBack() {
+        onBackPressed();
+    }
 }

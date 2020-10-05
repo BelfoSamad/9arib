@@ -2,6 +2,6 @@ package com.belfoapps.qarib.viewmodels;
 
 import androidx.lifecycle.ViewModel;
 
-public class PostViewModel extends ViewModel {
+public class ChatroomViewModel extends ViewModel {
     // TODO: Implement the ViewModel
 }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,8 +14,11 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.belfoapps.qarib.base.MainListener;
 import com.belfoapps.qarib.databinding.StartFragmentBinding;
+import com.belfoapps.qarib.pojo.User;
 import com.belfoapps.qarib.viewmodels.StartViewModel;
 import com.belfoapps.qarib.views.MainActivity;
+
+import java.util.Date;
 
 public class StartFragment extends Fragment {
     private static final String TAG = "StartFragment";
@@ -61,13 +65,13 @@ public class StartFragment extends Fragment {
             if (mBinding.username.getEditText().getText().toString().equals(""))
                 mBinding.username.setError(" ");
             else {
-                //mViewModel.setUser(mBinding.username.getEditText().getText().toString());
+                //Set User
+                mViewModel.setUser(mBinding.username.getEditText().getText().toString());
+
+                //Go to feed
                 listener.feed();
             }
         });
-
-        //Login Listener
-        mBinding.login.setOnClickListener(v -> listener.login());
     }
 
 }

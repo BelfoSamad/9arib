@@ -30,4 +30,12 @@ public class SharedPreferencesHelper {
     public boolean isFirstRun() {
         return sharedPreferences.getString(USER, null) == null;
     }
+
+    public void setUser(String username) {
+        editor.putString(USER, username).apply();
+    }
+
+    public String getUser() {
+        return sharedPreferences.getString(USER, null);
+    }
 }

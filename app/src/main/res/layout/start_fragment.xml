@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".views.fragments.StartFragment">
 
     <ImageView
@@ -39,37 +39,9 @@
         android:text="Description"
         android:textAlignment="center"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@id/login"
+        app:layout_constraintBottom_toTopOf="@id/username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/or"
-        android:layout_marginBottom="8dp"
-        app:cornerRadius="32dp"
-        android:paddingStart="32dp"
-        android:paddingEnd="32dp"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
-        android:text="Login Business Account"
-        android:fontFamily="@font/montserrat_bold"
-        android:textAllCaps="false"/>
-
-    <TextView
-        android:id="@+id/or"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="OR"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/montserrat_bold"
-        app:layout_constraintStart_toStartOf="@id/username"
-        app:layout_constraintEnd_toEndOf="@id/username"
-        app:layout_constraintBottom_toTopOf="@id/username"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/username"
@@ -77,11 +49,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginBottom="8dp"
         android:hint="Username"
+        android:textColorHint="@color/secondaryTextColor"
         app:boxCornerRadiusBottomEnd="32dp"
         app:boxCornerRadiusBottomStart="32dp"
         app:boxCornerRadiusTopEnd="32dp"
         app:boxCornerRadiusTopStart="32dp"
+        app:boxStrokeColor="@color/secondaryTextColor"
         app:boxStrokeWidth="1dp"
         app:boxStrokeWidthFocused="1dp"
         app:endIconMode="clear_text"
@@ -93,7 +68,6 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:digits="0,1,2,3,4,5,6,7,8,9,qwertzuiopasdfghjklyxcvbnm"
             android:fontFamily="@font/montserrat_bold"
             android:inputType="text"
             android:paddingStart="24dp"
@@ -106,14 +80,15 @@
         android:id="@+id/start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="32dp"
         android:layout_marginEnd="32dp"
-        app:cornerRadius="32dp"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="@font/montserrat_bold"
         android:padding="12dp"
         android:text="Let's Start"
-        android:fontFamily="@font/montserrat_bold"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false"
+        app:backgroundTint="@color/colorAccent"
+        app:cornerRadius="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

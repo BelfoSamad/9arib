@@ -64,7 +64,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="10dp"
                     android:background="@drawable/input_background"
                     android:drawableStart="@drawable/edit"
                     android:drawableEnd="@drawable/next"
@@ -72,7 +71,25 @@
                     android:fontFamily="@font/montserrat_bold"
                     android:hint="What's up"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="parent" />
+                    app:layout_constraintBottom_toTopOf="@id/post" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/post"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:drawableEnd="@drawable/next"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Post"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    app:backgroundTint="@color/colorCardAccent"
+                    app:cornerRadius="32dp"
+                    app:drawableTint="@android:color/white"
+                    app:elevation="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

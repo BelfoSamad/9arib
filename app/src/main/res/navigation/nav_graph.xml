@@ -25,25 +25,34 @@
         android:label="feed_fragment"
         tools:layout="@layout/feed_fragment">
         <action
-            android:id="@+id/go_profile"
-            app:destination="@id/profileFragment" />
+            android:id="@+id/action_feedFragment_to_chatroomFragment"
+            app:destination="@id/chatroomFragment" />
         <action
-            android:id="@+id/go_post"
-            app:destination="@id/postFragment" />
+            android:id="@+id/action_feedFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.belfoapps.qarib.views.fragments.ProfileFragment"
-        android:label="profile_fragment"
-        tools:layout="@layout/profile_fragment" />
-    <fragment
-        android:id="@+id/postFragment"
-        android:name="com.belfoapps.qarib.views.fragments.PostFragment"
-        android:label="post_fragment"
-        tools:layout="@layout/post_fragment" />
     <fragment
         android:id="@+id/startFragment"
         android:name="com.belfoapps.qarib.views.fragments.StartFragment"
         android:label="start_fragment"
         tools:layout="@layout/start_fragment" />
+    <fragment
+        android:id="@+id/chatroomFragment"
+        android:name="com.belfoapps.qarib.views.fragments.ChatroomFragment"
+        android:label="chatroom_fragment"
+        tools:layout="@layout/chatroom_fragment" >
+        <action
+            android:id="@+id/action_chatroomFragment_to_privateChatroomFragment"
+            app:destination="@id/privateChatroomFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/privateChatroomFragment"
+        android:name="com.belfoapps.qarib.views.fragments.PrivateChatroomFragment"
+        android:label="private_chatroom_fragment"
+        tools:layout="@layout/private_chatroom_fragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.belfoapps.qarib.views.fragments.ProfileFragment"
+        android:label="profile_fragment"
+        tools:layout="@layout/profile_fragment" />
 </navigation>

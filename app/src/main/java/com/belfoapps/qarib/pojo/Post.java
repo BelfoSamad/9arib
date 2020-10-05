@@ -1,5 +1,6 @@
 package com.belfoapps.qarib.pojo;
 
+import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -13,6 +14,8 @@ public class Post {
     private int views;
     private int upvotes;
     private Long timestamp;
+
+    @Embedded private User author;
 
     public Post(String content, int views, int upvotes, Long timestamp) {
         this.content = content;

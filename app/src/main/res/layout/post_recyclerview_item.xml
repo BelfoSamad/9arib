@@ -75,60 +75,27 @@
             app:layout_constraintStart_toStartOf="@id/author_type"
             app:layout_constraintTop_toBottomOf="@id/post_time" />
 
-        <ImageButton
-            android:id="@+id/upvote"
+        <ImageView
+            android:id="@+id/views_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:background="@null"
-            android:src="@drawable/upvote"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/author_type"
-            app:layout_constraintTop_toBottomOf="@id/post_content" />
-
-        <TextView
-            android:id="@+id/upvotes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="123"
-            android:textColor="@color/colorAccent"
-            app:layout_constraintBottom_toBottomOf="@id/upvote"
-            app:layout_constraintStart_toEndOf="@id/upvote"
-            app:layout_constraintTop_toTopOf="@id/upvote" />
-
-        <ImageButton
-            android:id="@+id/downvote"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:background="@null"
-            android:src="@drawable/downvote"
-            app:layout_constraintBottom_toBottomOf="@id/upvote"
-            app:layout_constraintStart_toEndOf="@id/upvotes"
-            app:layout_constraintTop_toTopOf="@id/upvote" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
-            android:src="@drawable/views"
-            app:layout_constraintBottom_toBottomOf="@id/upvote"
-            app:layout_constraintEnd_toStartOf="@id/views"
-            app:layout_constraintTop_toTopOf="@id/upvote" />
+            app:layout_constraintTop_toBottomOf="@id/post_content"
+            android:src="@drawable/views" />
 
         <TextView
             android:id="@+id/views"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="5dp"
             android:fontFamily="@font/montserrat_medium"
             android:text="12k"
-            app:layout_constraintBottom_toBottomOf="@id/upvote"
-            app:layout_constraintEnd_toStartOf="@id/share"
-            app:layout_constraintTop_toTopOf="@id/upvote" />
+            app:layout_constraintBottom_toBottomOf="@id/views_icon"
+            app:layout_constraintStart_toEndOf="@id/views_icon"
+            app:layout_constraintTop_toTopOf="@id/views_icon" />
 
         <ImageButton
             android:id="@+id/share"
@@ -137,9 +104,9 @@
             android:layout_marginEnd="24dp"
             android:background="@null"
             android:src="@drawable/share"
-            app:layout_constraintBottom_toBottomOf="@id/upvote"
+            app:layout_constraintBottom_toBottomOf="@id/views_icon"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/upvote" />
+            app:layout_constraintTop_toTopOf="@id/views_icon" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
