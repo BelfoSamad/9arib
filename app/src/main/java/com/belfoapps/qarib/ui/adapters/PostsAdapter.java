@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.belfoapps.qarib.R;
@@ -88,7 +89,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull PostsAdapter.ViewHolder holder, int position) {
 
-        //TODO: Author Type
+        //Set Normal Account Icon
+        holder.icon.setImageResource(R.drawable.person);
 
         //Set Author
         holder.author.setText(posts.get(position).getAuthor());
@@ -114,6 +116,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
         //-------------------------- Extra Posts
         if (getItemViewType(position) != NORMAL) {
+            //Set Business Account Icon
+            holder.icon.setImageResource(R.drawable.business);
             holder.title.setText(posts.get(position).getTitle());
             switch (getItemViewType(position)) {
                 case CONTACTS:

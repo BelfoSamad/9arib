@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="@id/back"
         app:layout_constraintBottom_toBottomOf="@id/back"
         app:layout_constraintStart_toEndOf="@id/back"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:text="@string/chatroom"
         android:fontFamily="@font/montserrat_bold"
         android:textSize="24sp"

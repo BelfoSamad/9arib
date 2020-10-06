@@ -29,10 +29,10 @@
         <item>Location</item>
     </string-array>
     <integer-array name="options_images">
-        <item>@drawable/back</item>
-        <item>@drawable/back</item>
-        <item>@drawable/back</item>
-        <item>@drawable/back</item>
+        <item>@drawable/contacts</item>
+        <item>@drawable/social_media</item>
+        <item>@drawable/website</item>
+        <item>@drawable/location</item>
     </integer-array>
     <integer-array name="options_colors">
         <item>@color/color_1</item>

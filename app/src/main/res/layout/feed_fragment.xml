@@ -83,8 +83,8 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="8dp"
+                    android:autofillHints="What's up"
                     android:background="@drawable/input_background"
-                    android:drawableStart="@drawable/edit"
                     android:drawablePadding="8dp"
                     android:fontFamily="@font/montserrat_bold"
                     android:hint="@string/whats_up"
@@ -92,15 +92,13 @@
                     android:textSize="12sp"
                     app:layout_constraintEnd_toStartOf="@id/send_post"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/create_extra_post"
-                    android:autofillHints="What's up" />
+                    app:layout_constraintTop_toBottomOf="@id/create_extra_post" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/send_post"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:drawableEnd="@drawable/next"
                     android:fontFamily="@font/montserrat_bold"
                     android:text="@string/post"
                     android:textAllCaps="false"

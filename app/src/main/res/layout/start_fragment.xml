@@ -56,6 +56,7 @@
         app:boxCornerRadiusBottomEnd="32dp"
         app:boxCornerRadiusBottomStart="32dp"
         app:boxCornerRadiusTopEnd="32dp"
+        app:startIconDrawable="@drawable/person"
         app:boxCornerRadiusTopStart="32dp"
         app:boxStrokeColor="@color/secondaryTextColor"
         app:boxStrokeWidth="1dp"
@@ -69,7 +70,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_bold"
+            android:fontFamily="@font/montserrat_medium"
             android:inputType="text"
             android:paddingStart="24dp"
             android:paddingEnd="4dp"

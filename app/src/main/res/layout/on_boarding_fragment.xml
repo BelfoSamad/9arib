@@ -53,7 +53,7 @@
         app:tabBackground="@drawable/indicator_selector"
         app:tabIndicatorHeight="0dp" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
