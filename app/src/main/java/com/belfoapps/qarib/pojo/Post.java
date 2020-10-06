@@ -1,6 +1,5 @@
 package com.belfoapps.qarib.pojo;
 
-import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -10,18 +9,26 @@ public class Post {
     @PrimaryKey(autoGenerate = true)
     private Long id;
 
+    private String author;
     private String content;
-    private int views;
-    private int upvotes;
     private Long timestamp;
+    private String description;
+    private String email;
+    private String website;
+    private String phone;
 
-    @Embedded private User author;
-
-    public Post(String content, int views, int upvotes, Long timestamp) {
+    public Post(String author, String content, Long timestamp) {
+        this.author = author;
         this.content = content;
-        this.views = views;
-        this.upvotes = upvotes;
         this.timestamp = timestamp;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public Long getId() {
@@ -40,14 +47,6 @@ public class Post {
         this.content = content;
     }
 
-    public int getViews() {
-        return views;
-    }
-
-    public void setViews(int views) {
-        this.views = views;
-    }
-
     public Long getTimestamp() {
         return timestamp;
     }
@@ -56,11 +55,35 @@ public class Post {
         this.timestamp = timestamp;
     }
 
-    public int getUpvotes() {
-        return upvotes;
+    public String getDescription() {
+        return description;
     }
 
-    public void setUpvotes(int upvotes) {
-        this.upvotes = upvotes;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

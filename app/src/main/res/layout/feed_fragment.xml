@@ -11,74 +11,94 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/topping">
+        android:background="@android:color/transparent">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
-            app:titleEnabled="false">
+            android:paddingBottom="16dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/feed_text"
+                    android:id="@+id/logo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginBottom="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
                     android:fontFamily="@font/montserrat_bold"
-                    android:text="Feed"
-                    android:textColor="@android:color/white"
+                    android:text="9arib"
+                    android:textColor="@color/primaryTextColor"
                     android:textSize="40sp"
-                    app:layout_constraintBottom_toTopOf="@id/add_feed"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/profile"
+                    android:id="@+id/chatroom"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     android:drawableEnd="@drawable/next"
                     android:fontFamily="@font/montserrat_bold"
-                    android:text="My Profile"
+                    android:text="Chatroom"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     app:backgroundTint="@color/colorCardAccent"
                     app:cornerRadius="32dp"
                     app:drawableTint="@android:color/white"
                     app:elevation="0dp"
-                    app:layout_constraintBottom_toBottomOf="@id/feed_text"
+                    app:layout_constraintBottom_toBottomOf="@id/logo"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/feed_text" />
+                    app:layout_constraintTop_toTopOf="@id/logo" />
+
+                <HorizontalScrollView
+                    android:id="@+id/create_extra_post"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fadingEdge="horizontal"
+                    android:fadingEdgeLength="2dp"
+                    android:requiresFadingEdge="horizontal"
+                    android:scrollbarSize="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/logo">
+
+                    <LinearLayout
+                        android:id="@+id/create_posts_recyclerview_container"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" />
+
+                </HorizontalScrollView>
 
                 <EditText
                     android:id="@+id/add_feed"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="8dp"
                     android:background="@drawable/input_background"
                     android:drawableStart="@drawable/edit"
-                    android:drawableEnd="@drawable/next"
                     android:drawablePadding="8dp"
                     android:fontFamily="@font/montserrat_bold"
                     android:hint="What's up"
+                    android:inputType="textMultiLine"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toTopOf="@id/post" />
+                    app:layout_constraintEnd_toStartOf="@id/post"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/create_extra_post" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/post"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="16dp"
                     android:drawableEnd="@drawable/next"
                     android:fontFamily="@font/montserrat_bold"
                     android:text="Post"
@@ -88,8 +108,9 @@
                     app:cornerRadius="32dp"
                     app:drawableTint="@android:color/white"
                     app:elevation="0dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintBottom_toBottomOf="@id/add_feed"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/add_feed" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -97,11 +118,33 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/posts_recyclerview"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <TextView
+            android:id="@+id/feed_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Feed"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="32sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/posts_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/feed_text" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

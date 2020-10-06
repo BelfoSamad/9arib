@@ -7,8 +7,6 @@ import androidx.room.Query;
 import androidx.room.Transaction;
 import androidx.room.Update;
 
-import com.belfoapps.qarib.pojo.Comment;
-import com.belfoapps.qarib.pojo.CommentsForPost;
 import com.belfoapps.qarib.pojo.Post;
 
 import java.util.List;
@@ -18,10 +16,7 @@ public interface PostsDao {
 
     //------------------------------------------ Insert
     @Insert
-    public void insertPost(Post post);
-
-    @Insert
-    public void insertComment(Comment comment);
+    public Long insertPost(Post post);
 
     //------------------------------------------ Queries
     @Query("SELECT * FROM Post")
@@ -29,7 +24,7 @@ public interface PostsDao {
 
     @Transaction
     @Query("SELECT * FROM Post WHERE id = :id")
-    public List<CommentsForPost> getPostById(Long id);
+    public Post getPostById(Long id);
 
     //------------------------------------------ Updates
     @Update

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/post_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -62,6 +63,20 @@
             app:layout_constraintTop_toTopOf="@id/post_author" />
 
         <TextView
+            android:id="@+id/post_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="hey there!"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/author_type"
+            app:layout_constraintTop_toBottomOf="@id/post_time" />
+
+        <TextView
             android:id="@+id/post_content"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -73,21 +88,52 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/author_type"
-            app:layout_constraintTop_toBottomOf="@id/post_time" />
+            app:layout_constraintTop_toBottomOf="@id/post_title" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:drawableStart="@drawable/back"
+            android:fontFamily="@font/montserrat_bold"
+            android:src="@drawable/views"
+            android:textAllCaps="false"
+            android:textColor="@color/secondaryTextColor"
+            app:backgroundTint="@color/colorBackground"
+            app:cornerRadius="32dp"
+            app:layout_constraintStart_toStartOf="@id/author_type"
+            app:layout_constraintTop_toBottomOf="@id/post_content"
+            tools:text="mail@gmail.com" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:drawableStart="@drawable/back"
+            android:fontFamily="@font/montserrat_bold"
+            android:src="@drawable/views"
+            android:textAllCaps="false"
+            android:textColor="@color/secondaryTextColor"
+            app:backgroundTint="@color/colorBackground"
+            app:cornerRadius="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/author_type"
+            app:layout_constraintTop_toBottomOf="@id/email"
+            tools:text="0663231326" />
 
         <ImageButton
             android:id="@+id/share"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="24dp"
             android:background="@null"
             android:src="@drawable/share"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/email"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/post_content" />
+            app:layout_constraintTop_toTopOf="@id/email" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

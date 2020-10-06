@@ -20,6 +20,9 @@ import com.belfoapps.qarib.views.MainActivity;
 
 import java.util.Date;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class StartFragment extends Fragment {
     private static final String TAG = "StartFragment";
 

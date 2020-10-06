@@ -21,4 +21,24 @@
         <item>@drawable/ic_launcher_background</item>
     </integer-array>
 
+    <!-- Create Party Options -->
+    <string-array name="options_titles">
+        <item>Contacts</item>
+        <item>Social Media</item>
+        <item>Website</item>
+        <item>Location</item>
+    </string-array>
+    <integer-array name="options_images">
+        <item>@drawable/back</item>
+        <item>@drawable/back</item>
+        <item>@drawable/back</item>
+        <item>@drawable/back</item>
+    </integer-array>
+    <integer-array name="options_colors">
+        <item>@color/color_1</item>
+        <item>@color/color_2</item>
+        <item>@color/color_3</item>
+        <item>@color/color_4</item>
+        <item>@color/color_5</item>
+    </integer-array>
 </resources>

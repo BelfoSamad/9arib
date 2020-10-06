@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/colorCard"
+    app:cardCornerRadius="32dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/post_type"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Create Location Post"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@id/close"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:src="@drawable/close"
+            app:layout_constraintBottom_toBottomOf="@id/post_type"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/post_type"
+            app:tint="@color/primaryTextColor" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/location_post"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="What's on your mind."
+            android:textColorHint="@color/primaryTextColor"
+            app:boxCornerRadiusBottomEnd="32dp"
+            app:boxCornerRadiusBottomStart="32dp"
+            app:boxCornerRadiusTopEnd="32dp"
+            app:boxCornerRadiusTopStart="32dp"
+            app:boxStrokeColor="@color/primaryTextColor"
+            app:boxStrokeErrorColor="@color/colorError"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="1dp"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/primaryTextColor"
+            app:errorIconTint="@color/colorError"
+            app:errorTextColor="@color/colorError"
+            app:helperTextEnabled="false"
+            app:hintTextColor="@color/primaryTextColor"
+            app:layout_constraintEnd_toEndOf="@id/close"
+            app:layout_constraintStart_toStartOf="@id/post_type"
+            app:layout_constraintTop_toBottomOf="@id/post_type">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:inputType="textMultiLine"
+                android:paddingStart="24dp"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:textAlignment="textStart"
+                android:textColor="@color/primaryTextColor"
+                android:textCursorDrawable="@null"
+                android:textSize="12sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/location_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="What do you wanna Say!"
+            android:textColorHint="@color/primaryTextColor"
+            app:boxCornerRadiusBottomEnd="32dp"
+            app:boxCornerRadiusBottomStart="32dp"
+            app:boxCornerRadiusTopEnd="32dp"
+            app:boxCornerRadiusTopStart="32dp"
+            app:boxStrokeColor="@color/primaryTextColor"
+            app:boxStrokeErrorColor="@color/colorError"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="1dp"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/primaryTextColor"
+            app:errorIconTint="@color/colorError"
+            app:errorTextColor="@color/colorError"
+            app:helperTextEnabled="false"
+            app:hintTextColor="@color/primaryTextColor"
+            app:layout_constraintEnd_toEndOf="@id/close"
+            app:layout_constraintStart_toStartOf="@id/post_type"
+            app:layout_constraintTop_toBottomOf="@id/location_post">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:inputType="phone"
+                android:paddingStart="24dp"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:textAlignment="textStart"
+                android:textColor="@color/primaryTextColor"
+                android:textCursorDrawable="@null"
+                android:textSize="12sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Get Location"
+            android:textAllCaps="false"
+            app:cornerRadius="32dp"
+            app:layout_constraintStart_toStartOf="@id/post_type"
+            app:layout_constraintTop_toBottomOf="@id/location_content" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/create_post"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@android:color/transparent"
+            android:drawableEnd="@drawable/back"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Add Post"
+            android:textAllCaps="false"
+            android:textColor="@color/primaryTextColor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/location" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

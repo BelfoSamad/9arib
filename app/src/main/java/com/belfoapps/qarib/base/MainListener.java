@@ -6,7 +6,7 @@ public interface MainListener {
 
     void feed();
 
-    void profile();
+    void chatroom();
 
     void goBack();
 }

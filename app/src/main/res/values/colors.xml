@@ -4,9 +4,16 @@
     <color name="colorPrimaryDark">#020202</color>
     <color name="colorAccent">#6a81f5</color>
     <color name="colorCardAccent">#788df8</color>
+    <color name="colorError">#e97776</color>
 
     <color name="colorBackground">#F4F5FA</color>
     <color name="colorCard">#FFFFFF</color>
     <color name="primaryTextColor">#020202</color>
     <color name="secondaryTextColor">#DFDEE4</color>
+
+    <color name="color_1">#bee7fc</color>
+    <color name="color_2">#fbe497</color>
+    <color name="color_3">#f8a697</color>
+    <color name="color_4">#d3b2e0</color>
+    <color name="color_5">#7fd8c0</color>
 </resources>
