@@ -96,17 +96,7 @@ public class ChatroomViewModel extends ViewModel {
         //Add you message to unget
         my_messages.add(message);
 
-        messageEngine.put(message, builder.build()).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(Exception e) {
-                Log.d(TAG, "onFailure: " + e.toString());
-            }
-        }).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                Log.d(TAG, "onSuccess");
-            }
-        });
+        messageEngine.put(message, builder.build()).addOnFailureListener(e -> Log.d(TAG, "onFailure: " + e.toString())).addOnSuccessListener(aVoid -> Log.d(TAG, "onSuccess"));
     }
 
     public void stopScanning() {

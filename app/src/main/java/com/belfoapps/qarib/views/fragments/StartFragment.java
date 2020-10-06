@@ -5,20 +5,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.belfoapps.qarib.R;
 import com.belfoapps.qarib.base.MainListener;
 import com.belfoapps.qarib.databinding.StartFragmentBinding;
-import com.belfoapps.qarib.pojo.User;
 import com.belfoapps.qarib.viewmodels.StartViewModel;
 import com.belfoapps.qarib.views.MainActivity;
-
-import java.util.Date;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -66,7 +63,7 @@ public class StartFragment extends Fragment {
         //Start Listener
         mBinding.start.setOnClickListener(v -> {
             if (mBinding.username.getEditText().getText().toString().equals(""))
-                mBinding.username.setError(" ");
+                mBinding.username.setError(getResources().getString(R.string.username_error));
             else {
                 //Set User
                 mViewModel.setUser(mBinding.username.getEditText().getText().toString());

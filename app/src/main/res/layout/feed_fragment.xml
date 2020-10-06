@@ -31,20 +31,20 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/montserrat_bold"
-                    android:text="9arib"
+                    android:text="@string/app_name"
                     android:textColor="@color/primaryTextColor"
                     android:textSize="40sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/chatroom"
+                    android:id="@+id/go_chatroom"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     android:drawableEnd="@drawable/next"
                     android:fontFamily="@font/montserrat_bold"
-                    android:text="Chatroom"
+                    android:text="@string/chatroom"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     app:backgroundTint="@color/colorCardAccent"
@@ -77,7 +77,7 @@
                 </HorizontalScrollView>
 
                 <EditText
-                    android:id="@+id/add_feed"
+                    android:id="@+id/feed_input"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -87,30 +87,31 @@
                     android:drawableStart="@drawable/edit"
                     android:drawablePadding="8dp"
                     android:fontFamily="@font/montserrat_bold"
-                    android:hint="What's up"
+                    android:hint="@string/whats_up"
                     android:inputType="textMultiLine"
                     android:textSize="12sp"
-                    app:layout_constraintEnd_toStartOf="@id/post"
+                    app:layout_constraintEnd_toStartOf="@id/send_post"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/create_extra_post" />
+                    app:layout_constraintTop_toBottomOf="@id/create_extra_post"
+                    android:autofillHints="What's up" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/post"
+                    android:id="@+id/send_post"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     android:drawableEnd="@drawable/next"
                     android:fontFamily="@font/montserrat_bold"
-                    android:text="Post"
+                    android:text="@string/post"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     app:backgroundTint="@color/colorCardAccent"
                     app:cornerRadius="32dp"
                     app:drawableTint="@android:color/white"
                     app:elevation="0dp"
-                    app:layout_constraintBottom_toBottomOf="@id/add_feed"
+                    app:layout_constraintBottom_toBottomOf="@id/feed_input"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/add_feed" />
+                    app:layout_constraintTop_toTopOf="@id/feed_input" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -130,7 +131,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="Feed"
+            android:text="@string/feed"
             android:textColor="@color/primaryTextColor"
             android:textSize="32sp"
             app:layout_constraintStart_toStartOf="parent"

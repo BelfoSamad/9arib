@@ -15,7 +15,8 @@
         android:background="@null"
         android:src="@drawable/back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/back" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -24,7 +25,7 @@
         app:layout_constraintBottom_toBottomOf="@id/back"
         app:layout_constraintStart_toEndOf="@id/back"
         android:layout_marginStart="8dp"
-        android:text="Chatroom"
+        android:text="@string/chatroom"
         android:fontFamily="@font/montserrat_bold"
         android:textSize="24sp"
         android:textColor="@color/primaryTextColor"/>
@@ -43,6 +44,5 @@
         android:layout_height="wrap_content"
         app:inputHint="Type Message"
         app:layout_constraintBottom_toBottomOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

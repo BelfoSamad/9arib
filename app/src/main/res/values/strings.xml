@@ -41,4 +41,63 @@
         <item>@color/color_4</item>
         <item>@color/color_5</item>
     </integer-array>
+
+    <!-- Content Description -->
+    <string name="back">Back</string>
+    <string name="close">Close</string>
+    <string name="share">Share</string>
+    <string name="type">Type</string>
+    <string name="illustration">Illustration</string>
+
+    <!-- Titles -->
+    <string name="chatroom">Chatroom</string>
+    <string name="feed">Feed</string>
+    <string name="start">Let\'s Start</string>
+
+    <!-- Dialog Titles -->
+    <string name="create_contacts_post">Create Contacts Post</string>
+    <string name="create_location_post">Create Location Post</string>
+    <string name="create_social_media_post">Create Social Media Post</string>
+    <string name="create_website_post">Create Website Post</string>
+
+    <!-- Create Post -->
+    <string name="create_post">Create Post</string>
+
+    <!-- Hints -->
+    <string name="email">Your email</string>
+    <string name="phone_number">Your phone number.</string>
+    <string name="website">Website</string>
+    <string name="username">Username</string>
+    <string name="whats_up">What\'s up</string>
+    <string name="post_title">Give the post a title.</string>
+    <!-- Contacts Hints -->
+    <string name="contacts_description">Explain why people should get your contacts…</string>
+    <!-- Location Hints -->
+    <string name="location_description">Explain why people should go to this place…</string>
+    <string name="get_location">Get Location</string>
+    <!-- Social Media Hints -->
+    <string name="social_media_description">Explain why people should share this post…</string>
+    <!-- Website Hints -->
+    <string name="website_description">Explain why people should check your website…</string>
+
+    <!-- Actions -->
+    <string name="hide">Hide</string>
+    <string name="post">Post</string>
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+    <string name="copy">Copy</string>
+
+    <!-- Social Media -->
+    <string name="twitter">Twitter</string>
+    <string name="facebook">Facebook</string>
+    <string name="instagram">Instagram</string>
+
+    <!-- Errors -->
+    <string name="username_error">Username error</string>
+    <string name="title_error">Error Post</string>
+    <string name="content_error">Error Content</string>
+    <string name="email_error">Error Email</string>
+    <string name="phone_error">Error Phone</string>
+    <string name="website_error">Website error</string>
+
 </resources>

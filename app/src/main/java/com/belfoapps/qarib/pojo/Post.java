@@ -12,7 +12,7 @@ public class Post {
     private String author;
     private String content;
     private Long timestamp;
-    private String description;
+    private String title;
     private String email;
     private String website;
     private String phone;
@@ -55,12 +55,12 @@ public class Post {
         this.timestamp = timestamp;
     }
 
-    public String getDescription() {
-        return description;
+    public String getTitle() {
+        return title;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getEmail() {

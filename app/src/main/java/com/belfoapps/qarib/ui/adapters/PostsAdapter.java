@@ -58,7 +58,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             return WEBSITE;
         else if (post.getEmail() != null)
             return CONTACTS;
-        else if (post.getDescription() != null)
+        else if (post.getTitle() != null)
             return SOCIAL_MEDIA;
         else return NORMAL;
     }
@@ -113,48 +113,50 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         });
 
         //-------------------------- Extra Posts
-        switch (getItemViewType(position)) {
-            case CONTACTS:
-                holder.email.setText(posts.get(position).getEmail());
-                holder.email.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(context, "Email", Toast.LENGTH_SHORT).show();
-                    }
-                });
+        if (getItemViewType(position) != NORMAL) {
+            holder.title.setText(posts.get(position).getTitle());
+            switch (getItemViewType(position)) {
+                case CONTACTS:
+                    holder.email.setText(posts.get(position).getEmail());
+                    holder.email.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(context, "Email", Toast.LENGTH_SHORT).show();
+                        }
+                    });
 
-
-                holder.phone.setText(posts.get(position).getEmail());
-                holder.phone.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(context, "Phone", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                break;
-            case SOCIAL_MEDIA:
-                holder.twitter.setOnClickListener(v -> {
-                    Toast.makeText(context, "Twitter", Toast.LENGTH_SHORT).show();
-                });
-                holder.facebook.setOnClickListener(v -> {
-                    Toast.makeText(context, "Facebook", Toast.LENGTH_SHORT).show();
-                });
-                holder.instagram.setOnClickListener(v -> {
-                    Toast.makeText(context, "Instagram", Toast.LENGTH_SHORT).show();
-                });
-                holder.copy.setOnClickListener(v -> {
-                    Toast.makeText(context, "Copy", Toast.LENGTH_SHORT).show();
-                });
-                break;
-            case WEBSITE:
-                holder.website.setText(posts.get(position).getWebsite());
-                holder.website.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(context, "Website", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                break;
+                    holder.phone.setText(posts.get(position).getPhone());
+                    holder.phone.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(context, "Phone", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    break;
+                case SOCIAL_MEDIA:
+                    holder.twitter.setOnClickListener(v -> {
+                        Toast.makeText(context, "Twitter", Toast.LENGTH_SHORT).show();
+                    });
+                    holder.facebook.setOnClickListener(v -> {
+                        Toast.makeText(context, "Facebook", Toast.LENGTH_SHORT).show();
+                    });
+                    holder.instagram.setOnClickListener(v -> {
+                        Toast.makeText(context, "Instagram", Toast.LENGTH_SHORT).show();
+                    });
+                    holder.copy.setOnClickListener(v -> {
+                        Toast.makeText(context, "Copy", Toast.LENGTH_SHORT).show();
+                    });
+                    break;
+                case WEBSITE:
+                    holder.website.setText(posts.get(position).getWebsite());
+                    holder.website.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(context, "Website", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    break;
+            }
         }
     }
 
@@ -184,7 +186,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         private TextView content;
         private ImageButton share;
 
-        private TextView description;
+        private TextView title;
+
         private MaterialButton twitter;
         private MaterialButton facebook;
         private MaterialButton instagram;
@@ -205,6 +208,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             hide = itemView.findViewById(R.id.hide);
             content = itemView.findViewById(R.id.post_content);
             share = itemView.findViewById(R.id.share);
+
+            title = itemView.findViewById(R.id.post_title);
 
             twitter = itemView.findViewById(R.id.twitter);
             facebook = itemView.findViewById(R.id.facebook);

@@ -72,8 +72,18 @@ public class ChatroomFragment extends Fragment {
         return mBinding.getRoot();
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mViewModel.stopBroadcasting();
+        mViewModel.stopScanning();
+    }
+
+    /***********************************************************************************************
+     * *********************************** Methods
+     */
     private void initMessagesList() {
-        messagesAdapter = new MessagesListAdapter<NearMessage>(String.valueOf(mViewModel.getUser().hashCode()),
+        messagesAdapter = new MessagesListAdapter<>(String.valueOf(mViewModel.getUser().hashCode()),
                 null);
         mBinding.messages.setAdapter(messagesAdapter);
         mViewModel.setMessagesListAdapter(messagesAdapter);

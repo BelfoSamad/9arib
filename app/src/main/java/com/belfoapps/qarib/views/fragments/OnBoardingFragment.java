@@ -105,17 +105,17 @@ public class OnBoardingFragment extends Fragment {
                 if (position == 0) {
                     mBinding.back.setVisibility(View.INVISIBLE);
                     mBinding.skip.setVisibility(View.VISIBLE);
-                    mBinding.next.setText("Next");
+                    mBinding.next.setText(getResources().getString(R.string.next));
                     mBinding.next.setTag(0);
                 } else if (position < mAdapter.getItemCount() - 1) {
                     mBinding.back.setVisibility(View.VISIBLE);
                     mBinding.skip.setVisibility(View.VISIBLE);
-                    mBinding.next.setText("Next");
+                    mBinding.next.setText(getResources().getString(R.string.next));
                     mBinding.next.setTag(0);
                 } else if (position == mAdapter.getItemCount() - 1) {
                     mBinding.back.setVisibility(View.VISIBLE);
                     mBinding.skip.setVisibility(View.INVISIBLE);
-                    mBinding.next.setText("Start");
+                    mBinding.next.setText(getResources().getString(R.string.start));
                     mBinding.next.setTag(1);
                 }
             }

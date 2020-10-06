@@ -20,7 +20,8 @@
             android:src="@drawable/next"
             app:layout_constraintBottom_toBottomOf="@id/post_time"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/post_author" />
+            app:layout_constraintTop_toTopOf="@id/post_author"
+            android:contentDescription="@string/type" />
 
         <TextView
             android:id="@+id/post_author"
@@ -29,7 +30,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="9adour"
+            tools:text="9adour"
             android:textColor="@color/primaryTextColor"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@id/author_type"
@@ -40,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_medium"
-            android:text="16:12"
+            tools:text="16:12"
             android:textColor="@color/secondaryTextColor"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@id/post_author"
@@ -52,7 +53,7 @@
             android:layout_height="40dp"
             android:layout_marginEnd="24dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="Hide"
+            android:text="@string/hide"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
             android:textSize="12sp"
@@ -69,7 +70,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="hey there!"
+            tools:text="hey there!"
             android:textColor="@color/primaryTextColor"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -83,7 +84,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
             android:fontFamily="@font/montserrat_medium"
-            android:text="hey there, this is the first goddamn post, and it looks so fucking  good mate..."
+            tools:text="hey there, this is the first goddamn post, and it looks so fucking  good mate..."
             android:textColor="@color/primaryTextColor"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -104,7 +105,7 @@
             app:cornerRadius="32dp"
             app:layout_constraintStart_toStartOf="@id/author_type"
             app:layout_constraintTop_toBottomOf="@id/post_content"
-            android:text="Twitter" />
+            android:text="@string/twitter" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/facebook"
@@ -120,7 +121,7 @@
             app:cornerRadius="32dp"
             app:layout_constraintStart_toStartOf="@id/author_type"
             app:layout_constraintTop_toBottomOf="@id/twitter"
-            android:text="Facebook" />
+            android:text="@string/facebook" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/instagram"
@@ -135,7 +136,7 @@
             app:cornerRadius="32dp"
             app:layout_constraintStart_toStartOf="@id/author_type"
             app:layout_constraintTop_toBottomOf="@id/facebook"
-            android:text="Instagram" />
+            android:text="@string/instagram" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/copy"
@@ -152,7 +153,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/author_type"
             app:layout_constraintTop_toBottomOf="@id/instagram"
-            android:text="Copy" />
+            android:text="@string/copy" />
 
         <ImageButton
             android:id="@+id/share"
@@ -163,7 +164,8 @@
             android:src="@drawable/share"
             app:layout_constraintBottom_toBottomOf="@id/twitter"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/twitter" />
+            app:layout_constraintTop_toTopOf="@id/twitter"
+            android:contentDescription="@string/share" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

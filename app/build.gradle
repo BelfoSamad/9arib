@@ -80,7 +80,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
 
     //Nearby
-    implementation 'com.huawei.hms:nearby:5.0.3.300'
+    implementation 'com.huawei.hms:nearby:5.0.2.300'
 
     //Room
     def room_version = "2.2.5"
@@ -89,4 +89,8 @@ dependencies {
 
     //Chat Kit
     implementation 'com.github.stfalcon:chatkit:0.3.3'
+
+    //Request Permission
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.4'
+    implementation 'com.github.tbruyelle:rxpermissions:0.12'
 }

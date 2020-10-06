@@ -41,6 +41,7 @@ public class FeedFragment extends Fragment implements CreatePostDialog.PostCreat
     private FeedViewModel mViewModel;
     private PostsAdapter mAdapter;
     private FeedFragmentBinding mBinding;
+    private CreatePostDialog dialog;
 
     /***********************************************************************************************
      * *********************************** LifeCycle
@@ -54,25 +55,26 @@ public class FeedFragment extends Fragment implements CreatePostDialog.PostCreat
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
         //Set ViewBinding
         mBinding = FeedFragmentBinding.inflate(inflater, container, false);
 
         //Set ViewModel
         mViewModel = new ViewModelProvider(requireActivity()).get(FeedViewModel.class);
 
+        //Init Profile Listener
+        mBinding.goChatroom.setOnClickListener(v -> listener.chatroom());
+
         //Add Create Options
         addCreateOptions();
+
+        //prepare input ui
+        prepareInputUi();
 
         //Init RecyclerView
         if (savedInstanceState != null)
             mAdapter = mViewModel.getAdapter();
         else initRecyclerView();
-
-        //Init Profile Listener
-        mBinding.chatroom.setOnClickListener(v -> listener.chatroom());
-
-        //prepare input ui
-        prepareInputUi();
 
         //Start Broadcasting
         mViewModel.startBroadcasting(requireContext());
@@ -86,6 +88,13 @@ public class FeedFragment extends Fragment implements CreatePostDialog.PostCreat
         mViewModel.startDiscovering(requireContext());
 
         return mBinding.getRoot();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mViewModel.stopBroadcasting();
+        mViewModel.stopDiscovering();
     }
 
     /***********************************************************************************************
@@ -106,8 +115,8 @@ public class FeedFragment extends Fragment implements CreatePostDialog.PostCreat
 
             int finalI = i;
             option.findViewById(R.id.create_post_container).setOnClickListener(v -> {
-                //dialog = new CreatePostDialog(getResources().getStringArray(R.array.options_titles)[finalI]);
-                //dialog.show(getChildFragmentManager(), "CreatePostDialog");
+                dialog = new CreatePostDialog(getResources().getStringArray(R.array.options_titles)[finalI]);
+                dialog.show(getChildFragmentManager(), "CreatePostDialog");
             });
 
             mBinding.createPostsRecyclerviewContainer.addView(option);
@@ -115,6 +124,32 @@ public class FeedFragment extends Fragment implements CreatePostDialog.PostCreat
 
         imgs.recycle();
         colors.recycle();
+    }
+
+    private void prepareInputUi() {
+        mBinding.feedInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.length() > 0)
+                    mBinding.sendPost.setEnabled(true);
+                else mBinding.sendPost.setEnabled(false);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        mBinding.sendPost.setOnClickListener(v -> {
+            mViewModel.addPost(mBinding.feedInput.getText().toString());
+            mBinding.feedInput.setText("");
+        });
     }
 
     private void initRecyclerView() {
@@ -127,35 +162,10 @@ public class FeedFragment extends Fragment implements CreatePostDialog.PostCreat
         mViewModel.setAdapter(mAdapter);
     }
 
-    private void prepareInputUi() {
-        mBinding.addFeed.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() > 0)
-                    mBinding.post.setEnabled(true);
-                else mBinding.post.setEnabled(false);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        mBinding.post.setOnClickListener(v -> {
-            mViewModel.addPost(mBinding.addFeed.getText().toString());
-            mBinding.addFeed.setText("");
-        });
-    }
-
     @Override
     public void createPost(Post post) {
         mViewModel.addExtraPost(post);
+        dialog.dismiss();
     }
 
     private static class RecyclerViewDecoration extends RecyclerView.ItemDecoration {

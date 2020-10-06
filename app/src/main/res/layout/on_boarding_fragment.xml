@@ -14,7 +14,8 @@
         android:layout_marginTop="24dp"
         android:src="@drawable/back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/back" />
 
     <TextView
         android:id="@+id/skip"
@@ -22,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:fontFamily="@font/montserrat_bold"
-        android:text="Skip"
+        android:text="@string/skip"
         android:textColor="#202020"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/back"
@@ -60,7 +61,7 @@
         android:background="@android:color/transparent"
         android:drawableEnd="@drawable/next"
         android:fontFamily="@font/montserrat_bold"
-        android:text="Next"
+        android:text="@string/next"
         android:textColor="@color/primaryTextColor"
         android:textAllCaps="false"
         android:textSize="14sp"

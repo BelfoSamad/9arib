@@ -23,7 +23,9 @@
 
     <action
         android:id="@+id/start"
-        app:destination="@id/feedFragment" />
+        app:destination="@id/feedFragment"
+        app:popUpTo="@id/onBoardingFragment"
+        app:popUpToInclusive="true" />
 
     <fragment
         android:id="@+id/feedFragment"
