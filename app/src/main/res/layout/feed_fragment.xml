@@ -1,149 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
-    android:fitsSystemWindows="true"
+    android:id="@+id/scroll_layout"
     tools:context="com.belfoapps.qarib.views.fragments.FeedFragment">
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent">
-
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="16dp"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/logo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:text="@string/app_name"
-                    android:textColor="@color/primaryTextColor"
-                    android:textSize="40sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/go_chatroom"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:drawableEnd="@drawable/next"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:text="@string/chatroom"
-                    android:textAllCaps="false"
-                    android:textColor="@android:color/white"
-                    app:backgroundTint="@color/colorCardAccent"
-                    app:cornerRadius="32dp"
-                    app:drawableTint="@android:color/white"
-                    app:elevation="0dp"
-                    app:layout_constraintBottom_toBottomOf="@id/logo"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/logo" />
-
-                <HorizontalScrollView
-                    android:id="@+id/create_extra_post"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:fadingEdge="horizontal"
-                    android:fadingEdgeLength="2dp"
-                    android:requiresFadingEdge="horizontal"
-                    android:scrollbarSize="0dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/logo">
-
-                    <LinearLayout
-                        android:id="@+id/create_posts_recyclerview_container"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal" />
-
-                </HorizontalScrollView>
-
-                <EditText
-                    android:id="@+id/feed_input"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="8dp"
-                    android:autofillHints="What's up"
-                    android:background="@drawable/input_background"
-                    android:drawablePadding="8dp"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:hint="@string/whats_up"
-                    android:inputType="textMultiLine"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toStartOf="@id/send_post"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/create_extra_post" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/send_post"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:text="@string/post"
-                    android:textAllCaps="false"
-                    android:textColor="@android:color/white"
-                    app:backgroundTint="@color/colorCardAccent"
-                    app:cornerRadius="32dp"
-                    app:drawableTint="@android:color/white"
-                    app:elevation="0dp"
-                    app:layout_constraintBottom_toBottomOf="@id/feed_input"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/feed_input" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/feed_text"
+            android:id="@+id/logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="@string/feed"
+            android:text="@string/app_name"
             android:textColor="@color/primaryTextColor"
-            android:textSize="32sp"
+            android:textSize="40sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/go_chatroom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:text="@string/chatroom"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:backgroundTint="@color/colorAccent"
+            app:cornerRadius="32dp"
+            app:icon="@drawable/next"
+            app:iconGravity="end"
+            app:iconTint="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@id/logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/logo" />
+
+        <HorizontalScrollView
+            android:id="@+id/create_extra_post"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:fadingEdge="horizontal"
+            android:fadingEdgeLength="2dp"
+            android:requiresFadingEdge="horizontal"
+            android:scrollbarSize="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/logo">
+
+            <LinearLayout
+                android:id="@+id/create_posts_recyclerview_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+
+        </HorizontalScrollView>
+
+        <EditText
+            android:id="@+id/feed_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:autofillHints="What's up"
+            android:background="@drawable/input_background"
+            android:fontFamily="@font/montserrat_medium"
+            android:hint="@string/whats_up"
+            android:inputType="textMultiLine"
+            android:paddingStart="24dp"
+            android:paddingTop="24dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="24dp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@id/send_post"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/create_extra_post" />
+
+        <ImageButton
+            android:id="@+id/send_post"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/montserrat_bold"
+            android:src="@drawable/post"
+            android:text="@string/post"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:tint="@color/colorAccent"
+            app:cornerRadius="32dp"
+            app:drawableTint="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@id/feed_input"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/feed_input" />
+
+        <com.skyfishjy.library.RippleBackground
+            android:id="@+id/ripple_background"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/feed_input"
+            app:rb_color="#336a81f5"
+            app:rb_duration="3000"
+            app:rb_radius="32dp"
+            app:rb_rippleAmount="4"
+            android:layout_marginTop="24dp"
+            app:rb_scale="6" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/posts_recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/feed_text" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:nestedScrollingEnabled="false"
+            app:layout_constraintTop_toBottomOf="@id/feed_input" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</ScrollView>

@@ -27,22 +27,22 @@
 
         <ImageView
             android:id="@+id/close"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_marginEnd="24dp"
+            android:contentDescription="@string/close"
             android:src="@drawable/close"
             app:layout_constraintBottom_toBottomOf="@id/post_type"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/post_type"
-            app:tint="@color/primaryTextColor"
-            android:contentDescription="@string/close" />
+            app:tint="@color/colorAccent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/website_title"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:hint="@string/post_title"
             android:textColorHint="@color/primaryTextColor"
             app:boxCornerRadiusBottomEnd="32dp"
@@ -128,8 +128,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:hint="@string/website"
-            app:startIconTint="@color/primaryTextColor"
-            app:startIconDrawable="@drawable/website"
             android:textColorHint="@color/primaryTextColor"
             app:boxCornerRadiusBottomEnd="32dp"
             app:boxCornerRadiusBottomStart="32dp"
@@ -147,7 +145,9 @@
             app:hintTextColor="@color/primaryTextColor"
             app:layout_constraintEnd_toEndOf="@id/close"
             app:layout_constraintStart_toStartOf="@id/post_type"
-            app:layout_constraintTop_toBottomOf="@id/website_content">
+            app:layout_constraintTop_toBottomOf="@id/website_content"
+            app:startIconDrawable="@drawable/website_small"
+            app:startIconTint="@color/primaryTextColor">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -173,11 +173,12 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:background="@android:color/transparent"
-            android:drawableEnd="@drawable/post"
+            android:drawableEnd="@drawable/post_small"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/create_post"
             android:textAllCaps="false"
-            android:textColor="@color/primaryTextColor"
+            android:textColor="@color/colorAccent"
+            app:drawableTint="@color/colorAccent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/website" />

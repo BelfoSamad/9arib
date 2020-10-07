@@ -16,4 +16,6 @@
     <color name="color_3">#f8a697</color>
     <color name="color_4">#d3b2e0</color>
     <color name="color_5">#7fd8c0</color>
+
+    <color name="mtrl_textinput_default_box_stroke_color">#020202</color>
 </resources>

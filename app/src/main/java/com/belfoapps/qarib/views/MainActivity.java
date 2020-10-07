@@ -12,8 +12,8 @@ import androidx.navigation.Navigation;
 
 import com.belfoapps.qarib.R;
 import com.belfoapps.qarib.base.MainListener;
-import com.belfoapps.qarib.utils.ConnectionUtils;
 import com.belfoapps.qarib.utils.Constants;
+import com.belfoapps.qarib.utils.ResourcesUtils;
 import com.belfoapps.qarib.viewmodels.MainViewModel;
 import com.tbruyelle.rxpermissions3.RxPermissions;
 
@@ -37,14 +37,14 @@ public class MainActivity extends AppCompatActivity implements MainListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (savedInstanceState != null)
+        if (savedInstanceState != null) {
             confChange = true;
-
-        //Set ViewModel
-        mViewModel = new ViewModelProvider(this).get(MainViewModel.class);
-
-        //Request Permission
-        requestPermissions();
+        } else {
+            //Set ViewModel
+            mViewModel = new ViewModelProvider(this).get(MainViewModel.class);
+            //Request Permission
+            requestPermissions();
+        }
     }
 
     @Override
@@ -61,11 +61,11 @@ public class MainActivity extends AppCompatActivity implements MainListener {
             case Constants.REQUEST_ENABLE_BT:
                 if (resultCode == RESULT_OK)
                     startService(Constants.REQUEST_ENABLE_LOCATION);
-                else Toast.makeText(this, "You should enable Bluetooth", Toast.LENGTH_SHORT).show();
+                else {
+                    Toast.makeText(this, "You should enable Bluetooth", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case Constants.REQUEST_ENABLE_LOCATION:
-                if (resultCode == RESULT_CANCELED)
-                    Toast.makeText(this, "You should enable Location", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
@@ -77,8 +77,7 @@ public class MainActivity extends AppCompatActivity implements MainListener {
     public void requestPermissions() {
         RxPermissions perm = new RxPermissions(this);
         perm.requestEach(Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                Manifest.permission.ACCESS_COARSE_LOCATION)
                 .subscribe(permission -> {
                     if (permission.shouldShowRequestPermissionRationale) {
                         //TODO: Just Denied
@@ -94,12 +93,12 @@ public class MainActivity extends AppCompatActivity implements MainListener {
     public void startService(int code) {
         switch (code) {
             case Constants.REQUEST_ENABLE_BT:
-                if (!ConnectionUtils.isBluetoothEnabled())
-                    ConnectionUtils.enableBluetooth(this);
+                if (!ResourcesUtils.isBluetoothEnabled())
+                    ResourcesUtils.enableBluetooth(this);
                 break;
             case Constants.REQUEST_ENABLE_LOCATION:
-                if (!ConnectionUtils.isLocationEnabled(this))
-                    ConnectionUtils.enableLocation(this);
+                if (!ResourcesUtils.isLocationEnabled(this))
+                    ResourcesUtils.enableLocation(this);
                 break;
         }
     }

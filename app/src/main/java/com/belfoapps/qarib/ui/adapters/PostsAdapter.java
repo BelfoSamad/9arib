@@ -1,7 +1,12 @@
 package com.belfoapps.qarib.ui.adapters;
 
 import android.annotation.SuppressLint;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +17,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.belfoapps.qarib.R;
@@ -24,6 +28,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
+import static android.content.Context.CLIPBOARD_SERVICE;
 
 public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> {
     private static final String TAG = "PostsAdapter";
@@ -50,6 +56,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         this.context = context;
         this.mViewModel = mViewModel;
         this.posts = posts;
+        Log.d(TAG, "PostsAdapter: " + posts.size());
     }
 
     @Override
@@ -101,9 +108,13 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         //Set Content
         holder.content.setText(posts.get(position).getContent());
 
-        if (posts.get(position).getAuthor().equals(mViewModel.getUser()))
+        if (posts.get(position).getAuthor().equals(mViewModel.getUser())) {
+            holder.hide.setText(context.getResources().getString(R.string.delete));
             holder.hide.setTag(0);
-        else holder.hide.setTag(1);
+        } else {
+            holder.hide.setText(context.getResources().getString(R.string.hide));
+            holder.hide.setTag(1);
+        }
 
         //Listeners
         holder.hide.setOnClickListener(v -> {
@@ -111,7 +122,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         });
 
         holder.share.setOnClickListener(v -> {
-            mViewModel.rePost(posts.get(position).getId());
+            if (!posts.get(position).getAuthor().equals(mViewModel.getUser()))
+                mViewModel.sendPost(posts.get(position));
         });
 
         //-------------------------- Extra Posts
@@ -122,46 +134,70 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             switch (getItemViewType(position)) {
                 case CONTACTS:
                     holder.email.setText(posts.get(position).getEmail());
-                    holder.email.setOnClickListener(new View.OnClickListener() {
+                    holder.email.setOnClickListener(v -> {
+                        Intent intent = new Intent(Intent.ACTION_SEND);
+                        intent.putExtra(Intent.EXTRA_EMAIL,
+                                new String[]{((MaterialButton) v).getText().toString()});
+                        context.startActivity(Intent.createChooser(intent, "Send email"));
+                    });
+                    holder.email.setOnLongClickListener(new View.OnLongClickListener() {
                         @Override
-                        public void onClick(View v) {
-                            Toast.makeText(context, "Email", Toast.LENGTH_SHORT).show();
+                        public boolean onLongClick(View v) {
+                            copyContent(((MaterialButton) v).getText().toString());
+                            return true;
                         }
                     });
 
                     holder.phone.setText(posts.get(position).getPhone());
-                    holder.phone.setOnClickListener(new View.OnClickListener() {
+                    holder.phone.setOnClickListener(v -> {
+                        Intent intent = new Intent(Intent.ACTION_DIAL);
+                        intent.setData(Uri.parse("tel:" + ((MaterialButton) v).getText().toString()));
+                        context.startActivity(intent);
+                    });
+                    holder.phone.setOnLongClickListener(new View.OnLongClickListener() {
                         @Override
-                        public void onClick(View v) {
-                            Toast.makeText(context, "Phone", Toast.LENGTH_SHORT).show();
+                        public boolean onLongClick(View v) {
+                            copyContent(((MaterialButton) v).getText().toString());
+                            return true;
                         }
                     });
                     break;
                 case SOCIAL_MEDIA:
-                    holder.twitter.setOnClickListener(v -> {
-                        Toast.makeText(context, "Twitter", Toast.LENGTH_SHORT).show();
-                    });
-                    holder.facebook.setOnClickListener(v -> {
-                        Toast.makeText(context, "Facebook", Toast.LENGTH_SHORT).show();
-                    });
-                    holder.instagram.setOnClickListener(v -> {
-                        Toast.makeText(context, "Instagram", Toast.LENGTH_SHORT).show();
-                    });
-                    holder.copy.setOnClickListener(v -> {
-                        Toast.makeText(context, "Copy", Toast.LENGTH_SHORT).show();
+                    holder.share_socials.setOnClickListener(v -> {
+                        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                        sharingIntent.setType("text/plain");
+                        sharingIntent.putExtra(Intent.EXTRA_TEXT, posts.get(position).getContent());
+                        context.startActivity(Intent.createChooser(sharingIntent, "Share via"));
                     });
                     break;
                 case WEBSITE:
                     holder.website.setText(posts.get(position).getWebsite());
-                    holder.website.setOnClickListener(new View.OnClickListener() {
+                    holder.website.setOnClickListener(v -> {
+                        String url = ((MaterialButton) v).getText().toString();
+                        if (!url.contains("https") && !url.contains("http"))
+                            url = "https://" + url;
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW,
+                                Uri.parse(url));
+                        context.startActivity(browserIntent);
+                    });
+                    holder.website.setOnLongClickListener(new View.OnLongClickListener() {
                         @Override
-                        public void onClick(View v) {
-                            Toast.makeText(context, "Website", Toast.LENGTH_SHORT).show();
+                        public boolean onLongClick(View v) {
+                            copyContent(((MaterialButton) v).getText().toString());
+                            return true;
                         }
                     });
                     break;
             }
         }
+    }
+
+    private void copyContent(String to_copy) {
+        ClipboardManager clipboard = (ClipboardManager) context.getSystemService(CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText(context.getResources().getString(R.string.app_name), to_copy);
+        clipboard.setPrimaryClip(clip);
+
+        Toast.makeText(context, "Text Copied", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -176,8 +212,13 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     }
 
     public void addPost(Post post) {
-        posts.add(0, post);
+        if (!posts.contains(post))
+            posts.add(0, post);
         notifyDataSetChanged();
+    }
+
+    public ArrayList<Post> getPosts() {
+        return (ArrayList<Post>) posts.clone();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -192,10 +233,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
         private TextView title;
 
-        private MaterialButton twitter;
-        private MaterialButton facebook;
-        private MaterialButton instagram;
-        private MaterialButton copy;
+        private MaterialButton share_socials;
 
         private MaterialButton website;
 
@@ -215,10 +253,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
             title = itemView.findViewById(R.id.post_title);
 
-            twitter = itemView.findViewById(R.id.twitter);
-            facebook = itemView.findViewById(R.id.facebook);
-            instagram = itemView.findViewById(R.id.instagram);
-            copy = itemView.findViewById(R.id.copy);
+            share_socials = itemView.findViewById(R.id.share_socials);
 
             website = itemView.findViewById(R.id.website);
 

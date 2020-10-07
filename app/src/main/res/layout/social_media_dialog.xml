@@ -28,14 +28,14 @@
 
         <ImageView
             android:id="@+id/close"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_marginEnd="24dp"
             android:src="@drawable/close"
             app:layout_constraintBottom_toBottomOf="@id/post_type"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/post_type"
-            app:tint="@color/primaryTextColor"
+            app:tint="@color/colorAccent"
             android:contentDescription="@string/close" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -43,7 +43,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:hint="@string/post_title"
             android:textColorHint="@color/primaryTextColor"
             app:boxCornerRadiusBottomEnd="32dp"
@@ -130,12 +130,12 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:background="@android:color/transparent"
-            android:drawableEnd="@drawable/post"
+            android:drawableEnd="@drawable/post_small"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/create_post"
             android:textAllCaps="false"
-            app:drawableTint="@color/primaryTextColor"
-            android:textColor="@color/primaryTextColor"
+            app:drawableTint="@color/colorAccent"
+            android:textColor="@color/colorAccent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/social_media_content" />

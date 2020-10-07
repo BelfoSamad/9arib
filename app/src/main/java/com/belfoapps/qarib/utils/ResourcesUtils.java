@@ -1,14 +1,11 @@
 package com.belfoapps.qarib.utils;
 
-import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.location.LocationManager;
 
-import com.belfoapps.qarib.views.MainActivity;
-
-public class ConnectionUtils {
+public class ResourcesUtils {
     private static final String TAG = "ConnectionUtils";
 
     public static boolean isBluetoothEnabled() {
@@ -16,9 +13,9 @@ public class ConnectionUtils {
         return mBluetoothAdapter.isEnabled();
     }
 
-    public static void enableBluetooth(MainActivity activity) {
+    public static void enableBluetooth(Context context) {
         Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-        activity.startActivityForResult(enableBtIntent, Constants.REQUEST_ENABLE_BT);
+        context.startActivity(enableBtIntent);
     }
 
     public static boolean isLocationEnabled(Context context) {
@@ -30,8 +27,8 @@ public class ConnectionUtils {
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
     }
 
-    public static void enableLocation(MainActivity activity) {
+    public static void enableLocation(Context context) {
         Intent enableLocationIntent = new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-        activity.startActivityForResult(enableLocationIntent, Constants.REQUEST_ENABLE_LOCATION);
+        context.startActivity(enableLocationIntent);
     }
 }

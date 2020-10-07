@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">9arib</string>
+    <string name="API_KEY">CgB6e3x9TgH6C2Jpfjyg2RYngshlDAizdtino3lsJGJdsZJPvWbc6OAzfuKkElaHQ6MGmaUVJivVJQm2yZN0XrPx</string>
 
     <!-- OnBoarding Titles/Description -->
     <string-array name="boarding_titles">
@@ -68,7 +69,7 @@
     <string name="phone_number">Your phone number.</string>
     <string name="website">Website</string>
     <string name="username">Username</string>
-    <string name="whats_up">What\'s up</string>
+    <string name="whats_up">What\'s up…</string>
     <string name="post_title">Give the post a title.</string>
     <!-- Contacts Hints -->
     <string name="contacts_description">Explain why people should get your contacts…</string>
@@ -82,15 +83,14 @@
 
     <!-- Actions -->
     <string name="hide">Hide</string>
+    <string name="delete">Delete</string>
     <string name="post">Post</string>
     <string name="skip">Skip</string>
     <string name="next">Next</string>
     <string name="copy">Copy</string>
 
     <!-- Social Media -->
-    <string name="twitter">Twitter</string>
-    <string name="facebook">Facebook</string>
-    <string name="instagram">Instagram</string>
+    <string name="share_social_media">Share in Social Media</string>
 
     <!-- Errors -->
     <string name="username_error">Username error</string>
@@ -99,5 +99,8 @@
     <string name="email_error">Error Email</string>
     <string name="phone_error">Error Phone</string>
     <string name="website_error">Website error</string>
+    <string name="email_not_valid">Email Not Valid</string>
+    <string name="website_not_valid">Website non valid</string>
+    <string name="location_error">Location isn\'t set</string>
 
 </resources>

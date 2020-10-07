@@ -24,6 +24,7 @@ import java.util.ArrayList;
 
 public class OnBoardingFragment extends Fragment {
     private static final String TAG = "OnBoardingFragment";
+    public static final String CURRENT = "Current_item";
 
     /***********************************************************************************************
      * *********************************** Declarations
@@ -46,14 +47,29 @@ public class OnBoardingFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         //Set ViewBinding
         mBinding = OnBoardingFragmentBinding.inflate(inflater, container, false);
+        return mBinding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         //Init ViewPager
         initViewPager();
 
+        //Go to last item
+        if (savedInstanceState != null)
+            mBinding.viewpager.setCurrentItem(savedInstanceState.getInt(CURRENT));
+
         //Init Listeners
         initListeners();
 
-        return mBinding.getRoot();
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(CURRENT, mBinding.viewpager.getCurrentItem());
     }
 
     @Override

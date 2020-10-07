@@ -28,7 +28,7 @@
             android:id="@+id/post_author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
             tools:text="9adour"
@@ -50,9 +50,9 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/hide"
-            android:layout_width="70dp"
+            android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="16dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/hide"
             android:textAllCaps="false"
@@ -61,8 +61,21 @@
             app:backgroundTint="@color/colorAccent"
             app:cornerRadius="32dp"
             app:layout_constraintBottom_toBottomOf="@id/post_time"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/share"
             app:layout_constraintTop_toTopOf="@id/post_author" />
+
+        <ImageButton
+            android:id="@+id/share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:background="@null"
+            android:src="@drawable/share"
+            android:tint="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="@id/post_time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/post_author"
+            android:contentDescription="@string/share" />
 
         <TextView
             android:id="@+id/post_title"
@@ -93,7 +106,7 @@
             app:layout_constraintTop_toBottomOf="@id/post_title" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/twitter"
+            android:id="@+id/share_socials"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -104,68 +117,10 @@
             android:textColor="@color/secondaryTextColor"
             app:backgroundTint="@color/colorBackground"
             app:cornerRadius="32dp"
-            app:layout_constraintStart_toStartOf="@id/author_type"
-            app:layout_constraintTop_toBottomOf="@id/post_content"
-            android:text="@string/twitter" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/facebook"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:drawableStart="@drawable/back"
-            android:fontFamily="@font/montserrat_bold"
-            android:textAllCaps="false"
-            android:textColor="@color/secondaryTextColor"
-            app:backgroundTint="@color/colorBackground"
-            app:cornerRadius="32dp"
-            app:layout_constraintStart_toStartOf="@id/author_type"
-            app:layout_constraintTop_toBottomOf="@id/twitter"
-            android:text="@string/facebook" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/instagram"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:drawableStart="@drawable/back"
-            android:fontFamily="@font/montserrat_bold"
-            android:textAllCaps="false"
-            android:textColor="@color/secondaryTextColor"
-            app:backgroundTint="@color/colorBackground"
-            app:cornerRadius="32dp"
-            app:layout_constraintStart_toStartOf="@id/author_type"
-            app:layout_constraintTop_toBottomOf="@id/facebook"
-            android:text="@string/instagram" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/copy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:drawableStart="@drawable/back"
-            android:fontFamily="@font/montserrat_bold"
-            android:textAllCaps="false"
-            android:textColor="@color/secondaryTextColor"
-            app:backgroundTint="@color/colorBackground"
-            app:cornerRadius="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/author_type"
-            app:layout_constraintTop_toBottomOf="@id/instagram"
-            android:text="@string/copy" />
-
-        <ImageButton
-            android:id="@+id/share"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:background="@null"
-            android:src="@drawable/share"
-            app:tint="@color/primaryTextColor"
-            app:layout_constraintBottom_toBottomOf="@id/twitter"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/twitter"
-            android:contentDescription="@string/share" />
+            app:layout_constraintTop_toBottomOf="@id/post_content"
+            android:text="@string/share_social_media" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

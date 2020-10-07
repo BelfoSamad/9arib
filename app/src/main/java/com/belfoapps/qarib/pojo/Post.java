@@ -3,6 +3,8 @@ package com.belfoapps.qarib.pojo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Objects;
+
 @Entity
 public class Post {
 
@@ -85,5 +87,21 @@ public class Post {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Post post = (Post) o;
+        return Objects.equals(id, post.id) &&
+                Objects.equals(author, post.author) &&
+                Objects.equals(content, post.content) &&
+                Objects.equals(title, post.title);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, author, content, title);
     }
 }
