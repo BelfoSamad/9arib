@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardBackgroundColor="@color/colorCard"
@@ -19,24 +18,24 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:fontFamily="@font/montserrat_bold"
+            android:text="@string/create_social_media_post"
             android:textColor="@color/primaryTextColor"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@id/close"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="@string/create_social_media_post" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/close"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginEnd="24dp"
+            android:contentDescription="@string/close"
             android:src="@drawable/close"
             app:layout_constraintBottom_toBottomOf="@id/post_type"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/post_type"
-            app:tint="@color/colorAccent"
-            android:contentDescription="@string/close" />
+            app:tint="@color/colorAccent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/social_media_title"
@@ -67,13 +66,13 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_bold"
+                android:fontFamily="@font/montserrat_medium"
                 android:inputType="text"
                 android:paddingStart="24dp"
                 android:paddingEnd="4dp"
-                android:textAlignment="textStart"
                 android:scrollbarStyle="insideInset"
                 android:scrollbars="vertical"
+                android:textAlignment="textStart"
                 android:textColor="@color/primaryTextColor"
                 android:textCursorDrawable="@null"
                 android:textSize="12sp" />
@@ -109,13 +108,188 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_bold"
+                android:fontFamily="@font/montserrat_medium"
                 android:inputType="textMultiLine"
                 android:paddingStart="24dp"
                 android:paddingEnd="4dp"
-                android:textAlignment="textStart"
                 android:scrollbarStyle="insideInset"
                 android:scrollbars="vertical"
+                android:textAlignment="textStart"
+                android:textColor="@color/primaryTextColor"
+                android:textCursorDrawable="@null"
+                android:textSize="12sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/twitter"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/twitter_handle"
+            android:textColorHint="@color/primaryTextColor"
+            app:boxCornerRadiusBottomEnd="32dp"
+            app:boxCornerRadiusBottomStart="32dp"
+            app:boxCornerRadiusTopEnd="32dp"
+            app:boxCornerRadiusTopStart="32dp"
+            app:boxStrokeColor="@color/primaryTextColor"
+            app:boxStrokeErrorColor="@color/colorError"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="1dp"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/primaryTextColor"
+            app:errorIconTint="@color/colorError"
+            app:errorTextColor="@color/colorError"
+            app:helperTextEnabled="false"
+            app:hintTextColor="@color/primaryTextColor"
+            app:layout_constraintEnd_toEndOf="@id/close"
+            app:layout_constraintStart_toStartOf="@id/post_type"
+            app:layout_constraintTop_toBottomOf="@id/social_media_content"
+            app:startIconDrawable="@drawable/twitter"
+            app:startIconTint="@null">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:inputType="textMultiLine"
+                android:paddingStart="24dp"
+                android:paddingEnd="4dp"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:textAlignment="textStart"
+                android:textColor="@color/primaryTextColor"
+                android:textCursorDrawable="@null"
+                android:textSize="12sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/facebook"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/facebook_handle"
+            android:textColorHint="@color/primaryTextColor"
+            app:boxCornerRadiusBottomEnd="32dp"
+            app:boxCornerRadiusBottomStart="32dp"
+            app:boxCornerRadiusTopEnd="32dp"
+            app:boxCornerRadiusTopStart="32dp"
+            app:boxStrokeColor="@color/primaryTextColor"
+            app:boxStrokeErrorColor="@color/colorError"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="1dp"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/primaryTextColor"
+            app:errorIconTint="@color/colorError"
+            app:errorTextColor="@color/colorError"
+            app:helperTextEnabled="false"
+            app:hintTextColor="@color/primaryTextColor"
+            app:layout_constraintEnd_toEndOf="@id/close"
+            app:layout_constraintStart_toStartOf="@id/post_type"
+            app:layout_constraintTop_toBottomOf="@id/twitter"
+            app:startIconDrawable="@drawable/facebook"
+            app:startIconTint="@null">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:paddingStart="24dp"
+                android:paddingEnd="4dp"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:textAlignment="textStart"
+                android:textColor="@color/primaryTextColor"
+                android:textCursorDrawable="@null"
+                android:textSize="12sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/instagram"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/instagram_handle"
+            android:textColorHint="@color/primaryTextColor"
+            app:boxCornerRadiusBottomEnd="32dp"
+            app:boxCornerRadiusBottomStart="32dp"
+            app:boxCornerRadiusTopEnd="32dp"
+            app:boxCornerRadiusTopStart="32dp"
+            app:boxStrokeColor="@color/primaryTextColor"
+            app:boxStrokeErrorColor="@color/colorError"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="1dp"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/primaryTextColor"
+            app:errorIconTint="@color/colorError"
+            app:errorTextColor="@color/colorError"
+            app:helperTextEnabled="false"
+            app:hintTextColor="@color/primaryTextColor"
+            app:layout_constraintEnd_toEndOf="@id/close"
+            app:layout_constraintStart_toStartOf="@id/post_type"
+            app:layout_constraintTop_toBottomOf="@id/facebook"
+            app:startIconDrawable="@drawable/instagram"
+            app:startIconTint="@null">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:inputType="textMultiLine"
+                android:paddingStart="24dp"
+                android:paddingEnd="4dp"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:textAlignment="textStart"
+                android:textColor="@color/primaryTextColor"
+                android:textCursorDrawable="@null"
+                android:textSize="12sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/linkedin"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/linkedin_handle"
+            android:textColorHint="@color/primaryTextColor"
+            app:boxCornerRadiusBottomEnd="32dp"
+            app:boxCornerRadiusBottomStart="32dp"
+            app:boxCornerRadiusTopEnd="32dp"
+            app:boxCornerRadiusTopStart="32dp"
+            app:boxStrokeColor="@color/primaryTextColor"
+            app:boxStrokeErrorColor="@color/colorError"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="1dp"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/primaryTextColor"
+            app:errorIconTint="@color/colorError"
+            app:errorTextColor="@color/colorError"
+            app:helperTextEnabled="false"
+            app:hintTextColor="@color/primaryTextColor"
+            app:layout_constraintEnd_toEndOf="@id/close"
+            app:layout_constraintStart_toStartOf="@id/post_type"
+            app:layout_constraintTop_toBottomOf="@id/instagram"
+            app:startIconDrawable="@drawable/linkedin"
+            app:startIconTint="@null">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:inputType="textMultiLine"
+                android:paddingStart="24dp"
+                android:paddingEnd="4dp"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:textAlignment="textStart"
                 android:textColor="@color/primaryTextColor"
                 android:textCursorDrawable="@null"
                 android:textSize="12sp" />
@@ -134,11 +308,11 @@
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/create_post"
             android:textAllCaps="false"
-            app:drawableTint="@color/colorAccent"
             android:textColor="@color/colorAccent"
+            app:drawableTint="@color/colorAccent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/social_media_content" />
+            app:layout_constraintTop_toBottomOf="@id/linkedin" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

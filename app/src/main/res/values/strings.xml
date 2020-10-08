@@ -4,36 +4,45 @@
 
     <!-- OnBoarding Titles/Description -->
     <string-array name="boarding_titles">
-        <item>Hype 1</item>
-        <item>Hype 2</item>
-        <item>Hype 3</item>
-        <item>Hype 4</item>
+        <item>Chat with strangers around you.</item>
+        <item>Know what\'s going on around you.</item>
+        <item>Demand help and help others.</item>
+        <item>Out-Store marketing made easy for you.</item>
+        <item>Promote yourself.</item>
+        <item>Call to actions.</item>
+        <item>Be cautious.</item>
     </string-array>
     <string-array name="boarding_descriptions">
-        <item>Hype 1 Description</item>
-        <item>Hype 2 Description</item>
-        <item>Hype 3 Description</item>
-        <item>Hype 4 Description</item>
+        <item>With 9arib, you can talk to strangers around you anonymously…\n no need to be shy around others anymore</item>
+        <item>Know you can have context about what\'s going on around you, know what people are up to and have fun.</item>
+        <item>If you have a problem, just post it and people around you will know about your problem and help you.</item>
+        <item>With business account. You can post offers and promotions and people near you will know about it.</item>
+        <item>With business account. You can promote yourself locally, just post your contacts and people near you will reach to you.</item>
+        <item>With business account. You can make call to actions, people near you can check your website, contact you and share your post.</item>
+        <item>Make sure you don\'t post private information like your passwords, your bank account…</item>
     </string-array>
     <integer-array name="boarding_images">
-        <item>@drawable/ic_launcher_background</item>
-        <item>@drawable/ic_launcher_background</item>
-        <item>@drawable/ic_launcher_background</item>
-        <item>@drawable/ic_launcher_background</item>
+        <item>@drawable/chat_with_others</item>
+        <item>@drawable/context</item>
+        <item>@drawable/demand_help</item>
+        <item>@drawable/out_store_marketing</item>
+        <item>@drawable/promote_self</item>
+        <item>@drawable/call_to_action</item>
+        <item>@drawable/be_cautious</item>
     </integer-array>
 
     <!-- Create Party Options -->
     <string-array name="options_titles">
+        <item>Offer</item>
         <item>Contacts</item>
         <item>Social Media</item>
         <item>Website</item>
-        <item>Location</item>
     </string-array>
     <integer-array name="options_images">
+        <item>@drawable/offer</item>
         <item>@drawable/contacts</item>
         <item>@drawable/social_media</item>
         <item>@drawable/website</item>
-        <item>@drawable/location</item>
     </integer-array>
     <integer-array name="options_colors">
         <item>@color/color_1</item>
@@ -42,6 +51,11 @@
         <item>@color/color_4</item>
         <item>@color/color_5</item>
     </integer-array>
+
+
+    <!-- Start -->
+    <string name="wifi_error">For authentication the app need network connection, turn on wifi or mobile data</string>
+    <string name="i_am_in">I am In!</string>
 
     <!-- Content Description -->
     <string name="back">Back</string>
@@ -53,11 +67,11 @@
     <!-- Titles -->
     <string name="chatroom">Chatroom</string>
     <string name="feed">Feed</string>
-    <string name="start">Let\'s Start</string>
+    <string name="start">Start</string>
 
     <!-- Dialog Titles -->
     <string name="create_contacts_post">Create Contacts Post</string>
-    <string name="create_location_post">Create Location Post</string>
+    <string name="create_offer_post">Create Offer Post</string>
     <string name="create_social_media_post">Create Social Media Post</string>
     <string name="create_website_post">Create Website Post</string>
 
@@ -65,21 +79,21 @@
     <string name="create_post">Create Post</string>
 
     <!-- Hints -->
-    <string name="email">Your email</string>
+    <string name="email">Your email.</string>
     <string name="phone_number">Your phone number.</string>
-    <string name="website">Website</string>
+    <string name="website">Your Website link.</string>
     <string name="username">Username</string>
     <string name="whats_up">What\'s up…</string>
     <string name="post_title">Give the post a title.</string>
     <!-- Contacts Hints -->
-    <string name="contacts_description">Explain why people should get your contacts…</string>
+    <string name="contacts_description">why people should get your contacts…</string>
     <!-- Location Hints -->
-    <string name="location_description">Explain why people should go to this place…</string>
+    <string name="product_description">why people should get this offer…</string>
     <string name="get_location">Get Location</string>
     <!-- Social Media Hints -->
-    <string name="social_media_description">Explain why people should share this post…</string>
+    <string name="social_media_description">Why people should follow you…</string>
     <!-- Website Hints -->
-    <string name="website_description">Explain why people should check your website…</string>
+    <string name="website_description">Why people should check the link…</string>
 
     <!-- Actions -->
     <string name="hide">Hide</string>
@@ -93,14 +107,33 @@
     <string name="share_social_media">Share in Social Media</string>
 
     <!-- Errors -->
-    <string name="username_error">Username error</string>
-    <string name="title_error">Error Post</string>
-    <string name="content_error">Error Content</string>
-    <string name="email_error">Error Email</string>
-    <string name="phone_error">Error Phone</string>
-    <string name="website_error">Website error</string>
-    <string name="email_not_valid">Email Not Valid</string>
-    <string name="website_not_valid">Website non valid</string>
+    <string name="username_error">You should add a username to continue.</string>
+    <string name="title_error">Post title shouldn\'t be empty.</string>
+    <string name="content_error">Post content shouldn\'t be empty.</string>
+    <string name="email_error">Email shouldn\'t be empty.</string>
+    <string name="phone_error">Phone shouldn\'t be empty.</string>
+    <string name="website_error">Link shouldn\'t be empty.</string>
+    <string name="email_not_valid">This email isn\'t valid.</string>
+    <string name="website_not_valid">This link isn\'t valid.</string>
     <string name="location_error">Location isn\'t set</string>
+    <string name="turn_on_location">You should turn on Location</string>
+    <string name="plane_mode">The App won\'t work in plan mode</string>
+    <string name="turn_on_blutooth">You should turn bluetooth on</string>
+    <string name="require_permission">The App requires this permission to work</string>
+    <string name="product_name">Product Name</string>
+    <string name="product_price">Product Price</string>
+    <string name="offer_percentage">Offer Percentage</string>
+    <string name="product_title_error">Product Title shouldn\'t be empty.</string>
+    <string name="product_content_error">This shouldn\'t be empty.</string>
+    <string name="product_price_error">Price shouldn\'t be empty.</string>
+    <string name="product_percentage_error">Offer shouldn\'t be empty.</string>
+    <string name="twitter">Twitter</string>
+    <string name="facebook">Facebook</string>
+    <string name="instagram">Instagram</string>
+    <string name="linkedin">Linkedin</string>
+    <string name="twitter_handle">Your Twitter Handle</string>
+    <string name="facebook_handle">Your Facebook Handle</string>
+    <string name="instagram_handle">Your Instagram Handle</string>
+    <string name="linkedin_handle">Your Linkedin Handle</string>
 
 </resources>

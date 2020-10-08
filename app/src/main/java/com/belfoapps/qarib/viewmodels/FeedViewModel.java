@@ -12,10 +12,10 @@ import androidx.lifecycle.ViewModel;
 import com.belfoapps.qarib.base.AppDatabase;
 import com.belfoapps.qarib.models.SharedPreferencesHelper;
 import com.belfoapps.qarib.pojo.Post;
-import com.belfoapps.qarib.ui.adapters.PostsAdapter;
 import com.belfoapps.qarib.utils.ConnectionsService;
 import com.belfoapps.qarib.utils.JsonUtils;
 import com.belfoapps.qarib.utils.Types;
+import com.huawei.hms.analytics.HiAnalyticsInstance;
 import com.huawei.hms.nearby.message.Message;
 
 import java.util.ArrayList;
@@ -28,9 +28,10 @@ public class FeedViewModel extends ViewModel {
      */
     private SharedPreferencesHelper mSharedPrefs;
     private AppDatabase mDb;
-    private PostsAdapter mAdapter;
+    private HiAnalyticsInstance analytics;
     private ConnectionsService connections;
     private MutableLiveData<Post> postData;
+    private MutableLiveData<ArrayList<Post>> postsData;
     private ArrayList<Post> posts;
 
     /***********************************************************************************************
@@ -67,11 +68,25 @@ public class FeedViewModel extends ViewModel {
         this.posts = posts;
     }
 
+    public MutableLiveData<ArrayList<Post>> getPostsData() {
+        if (postsData == null)
+            postsData = new MutableLiveData<>();
+        return postsData;
+    }
+
+    public void setPostsData(MutableLiveData<ArrayList<Post>> postsData) {
+        this.postsData = postsData;
+    }
+
     //Methods
     public MutableLiveData<Message> startScanning(boolean listening) {
         if (listening)
             connections.startScanningForPosts();
         return connections.getPostData();
+    }
+
+    public void getSavedPosts() {
+        new GetPosts().execute();
     }
 
     public void addPost(String content) {
@@ -113,6 +128,21 @@ public class FeedViewModel extends ViewModel {
     }
 
     //Tasks
+    @SuppressLint("StaticFieldLeak")
+    private class GetPosts extends AsyncTask<Void, Void, ArrayList<Post>> {
+
+        @Override
+        protected ArrayList<Post> doInBackground(Void... voids) {
+            return new ArrayList<>(mDb.postsDao().getPosts());
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<Post> post) {
+            super.onPostExecute(post);
+            postsData.postValue(post);
+        }
+    }
+
     @SuppressLint("StaticFieldLeak")
     private class InsertPost extends AsyncTask<Post, Void, Post> {
 

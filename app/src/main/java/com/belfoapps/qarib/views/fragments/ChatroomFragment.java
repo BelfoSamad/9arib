@@ -82,6 +82,7 @@ public class ChatroomFragment extends Fragment {
         } else {
             messagesAdapter = new MessagesListAdapter<>(String.valueOf(mViewModel.getUser().hashCode()),
                     null);
+
             mViewModel.setMessagesListAdapter(messagesAdapter);
 
             //Scan Messages
@@ -134,6 +135,7 @@ public class ChatroomFragment extends Fragment {
             NearMessage msg = new NearMessage(mViewModel.getUser(), input.toString(), System.currentTimeMillis());
             mViewModel.sendMessage(msg);
             messagesAdapter.addToStart(msg, true);
+            mBinding.rippleBackground.stopRippleAnimation();
             return true;
         });
     }

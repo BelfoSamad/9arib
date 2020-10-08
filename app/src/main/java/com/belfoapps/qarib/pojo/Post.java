@@ -1,12 +1,13 @@
 package com.belfoapps.qarib.pojo;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.util.Objects;
 
 @Entity
-public class Post {
+public class Post implements Cloneable {
 
     @PrimaryKey(autoGenerate = true)
     private Long id;
@@ -18,6 +19,12 @@ public class Post {
     private String email;
     private String website;
     private String phone;
+    private String twitter;
+    private String facebook;
+    private String instagram;
+    private String linkedin;
+    private int price;
+    private int percentage;
 
     public Post(String author, String content, Long timestamp) {
         this.author = author;
@@ -89,6 +96,38 @@ public class Post {
         this.phone = phone;
     }
 
+    public String getTwitter() {
+        return twitter;
+    }
+
+    public void setTwitter(String twitter) {
+        this.twitter = twitter;
+    }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    public String getInstagram() {
+        return instagram;
+    }
+
+    public void setInstagram(String instagram) {
+        this.instagram = instagram;
+    }
+
+    public String getLinkedin() {
+        return linkedin;
+    }
+
+    public void setLinkedin(String linkedin) {
+        this.linkedin = linkedin;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -103,5 +142,27 @@ public class Post {
     @Override
     public int hashCode() {
         return Objects.hash(id, author, content, title);
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getPercentage() {
+        return percentage;
+    }
+
+    public void setPercentage(int percentage) {
+        this.percentage = percentage;
+    }
+
+    @NonNull
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

@@ -15,6 +15,9 @@ import com.belfoapps.qarib.base.MainListener;
 import com.belfoapps.qarib.utils.Constants;
 import com.belfoapps.qarib.utils.ResourcesUtils;
 import com.belfoapps.qarib.viewmodels.MainViewModel;
+import com.huawei.hms.analytics.HiAnalytics;
+import com.huawei.hms.analytics.HiAnalyticsInstance;
+import com.huawei.hms.analytics.HiAnalyticsTools;
 import com.tbruyelle.rxpermissions3.RxPermissions;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -34,6 +37,9 @@ public class MainActivity extends AppCompatActivity implements MainListener {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Set Theme
+        setTheme(R.style.AppTheme);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -76,15 +82,12 @@ public class MainActivity extends AppCompatActivity implements MainListener {
     @Override
     public void requestPermissions() {
         RxPermissions perm = new RxPermissions(this);
-        perm.requestEach(Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.ACCESS_COARSE_LOCATION)
+        perm.requestEach(Manifest.permission.ACCESS_FINE_LOCATION)
                 .subscribe(permission -> {
                     if (permission.shouldShowRequestPermissionRationale) {
-                        //TODO: Just Denied
-                        Toast.makeText(this, "Should I Request Again?", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Should I Request Again?", Toast.LENGTH_LONG).show();
                     } else if (!permission.granted) {
-                        //TODO: Clicked On Never
-                        Toast.makeText(this, "Go to Settings", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Go to Settings", Toast.LENGTH_LONG).show();
                     }
                 });
     }

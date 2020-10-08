@@ -8,6 +8,7 @@
 
     <color name="colorBackground">#F4F5FA</color>
     <color name="colorCard">#FFFFFF</color>
+    <color name="colorButton">#e1e1e1</color>
     <color name="primaryTextColor">#020202</color>
     <color name="secondaryTextColor">#DFDEE4</color>
 

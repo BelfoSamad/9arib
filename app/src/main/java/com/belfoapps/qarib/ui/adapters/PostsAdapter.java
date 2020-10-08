@@ -6,6 +6,9 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.StrikethroughSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +40,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     public static final int CONTACTS = 2;
     public static final int SOCIAL_MEDIA = 3;
     public static final int WEBSITE = 4;
-    public static final int LOCATION = 5;
+    public static final int OFFER = 5;
 
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat("HH:mm");
@@ -66,6 +69,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             return WEBSITE;
         else if (post.getEmail() != null)
             return CONTACTS;
+        else if (post.getPrice() != 0)
+            return OFFER;
         else if (post.getTitle() != null)
             return SOCIAL_MEDIA;
         else return NORMAL;
@@ -87,6 +92,9 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             case WEBSITE:
                 return new PostsAdapter.ViewHolder(LayoutInflater.from(context)
                         .inflate(R.layout.website_post_item, parent, false));
+            case OFFER:
+                return new PostsAdapter.ViewHolder(LayoutInflater.from(context)
+                        .inflate(R.layout.offer_post_item, parent, false));
             default:
                 return new PostsAdapter.ViewHolder(LayoutInflater.from(context)
                         .inflate(R.layout.post_recyclerview_item, parent, false));
@@ -115,6 +123,10 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             holder.hide.setText(context.getResources().getString(R.string.hide));
             holder.hide.setTag(1);
         }
+
+        //Share Option
+        if (posts.get(position).getAuthor().equals(mViewModel.getUser()))
+            holder.share.setVisibility(View.GONE);
 
         //Listeners
         holder.hide.setOnClickListener(v -> {
@@ -163,11 +175,35 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                     });
                     break;
                 case SOCIAL_MEDIA:
-                    holder.share_socials.setOnClickListener(v -> {
-                        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-                        sharingIntent.setType("text/plain");
-                        sharingIntent.putExtra(Intent.EXTRA_TEXT, posts.get(position).getContent());
-                        context.startActivity(Intent.createChooser(sharingIntent, "Share via"));
+                    if (posts.get(position).getFacebook() == null)
+                        holder.facebook.setVisibility(View.GONE);
+                    if (posts.get(position).getTwitter() == null)
+                        holder.twitter.setVisibility(View.GONE);
+                    if (posts.get(position).getInstagram() == null)
+                        holder.instagram.setVisibility(View.GONE);
+                    if (posts.get(position).getLinkedin() == null)
+                        holder.linkedin.setVisibility(View.GONE);
+
+                    holder.facebook.setOnClickListener(v -> {
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW,
+                                Uri.parse("https://www.facebook.com/" + posts.get(position).getFacebook()));
+                        context.startActivity(browserIntent);
+                    });
+                    holder.twitter.setOnClickListener(v -> {
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW,
+                                Uri.parse("https://twitter.com/" + posts.get(position).getTwitter()));
+                        context.startActivity(browserIntent);
+
+                    });
+                    holder.instagram.setOnClickListener(v -> {
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW,
+                                Uri.parse("https://www.instagram.com/" + posts.get(position).getInstagram()));
+                        context.startActivity(browserIntent);
+                    });
+                    holder.linkedin.setOnClickListener(v -> {
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW,
+                                Uri.parse("https://www.linkedin.com/in/" + posts.get(position).getLinkedin()));
+                        context.startActivity(browserIntent);
                     });
                     break;
                 case WEBSITE:
@@ -187,6 +223,24 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                             return true;
                         }
                     });
+                    break;
+                case OFFER:
+                    double new_price;
+                    if (posts.get(position).getPercentage() != 0)
+                        new_price = posts.get(position).getPrice() -
+                                (posts.get(position).getPrice() * ((float) posts.get(position).getPercentage() / 100));
+                    else new_price = posts.get(position).getPrice();
+
+                    String final_price1 = "Price: " + posts.get(position).getPrice();
+                    String final_price2 = " - " + new_price;
+                    SpannableStringBuilder spannable = new SpannableStringBuilder(final_price1 + final_price2);
+                    spannable.setSpan(
+                            new StrikethroughSpan(),
+                            7, // start
+                            final_price1.length(), // end
+                            Spannable.SPAN_EXCLUSIVE_INCLUSIVE
+                    );
+                    holder.product.setText(spannable);
                     break;
             }
         }
@@ -218,7 +272,16 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     }
 
     public ArrayList<Post> getPosts() {
-        return (ArrayList<Post>) posts.clone();
+        ArrayList<Post> clone = new ArrayList<>();
+        for (Post post:
+             posts) {
+            try {
+                clone.add((Post) post.clone());
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+            }
+        }
+        return clone;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -233,12 +296,17 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
         private TextView title;
 
-        private MaterialButton share_socials;
+        private MaterialButton facebook;
+        private MaterialButton twitter;
+        private MaterialButton instagram;
+        private MaterialButton linkedin;
 
         private MaterialButton website;
 
         private MaterialButton email;
         private MaterialButton phone;
+
+        private TextView product;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -253,12 +321,17 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
             title = itemView.findViewById(R.id.post_title);
 
-            share_socials = itemView.findViewById(R.id.share_socials);
+            facebook = itemView.findViewById(R.id.facebook);
+            twitter = itemView.findViewById(R.id.twitter);
+            instagram = itemView.findViewById(R.id.instagram);
+            linkedin = itemView.findViewById(R.id.linkedin);
 
             website = itemView.findViewById(R.id.website);
 
             email = itemView.findViewById(R.id.email);
             phone = itemView.findViewById(R.id.phone);
+
+            product = itemView.findViewById(R.id.product_price);
         }
     }
 }

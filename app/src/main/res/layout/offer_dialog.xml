@@ -18,7 +18,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="@string/create_location_post"
+            android:text="@string/create_offer_post"
             android:textColor="@color/primaryTextColor"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@id/close"
@@ -38,12 +38,12 @@
             android:contentDescription="@string/close" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/location_title"
+            android:id="@+id/product_title"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:hint="@string/post_title"
+            android:hint="@string/product_name"
             android:textColorHint="@color/primaryTextColor"
             app:boxCornerRadiusBottomEnd="32dp"
             app:boxCornerRadiusBottomStart="32dp"
@@ -80,12 +80,12 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/location_content"
+            android:id="@+id/product_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="@string/location_description"
+            android:hint="@string/product_description"
             android:textColorHint="@color/primaryTextColor"
             app:boxCornerRadiusBottomEnd="32dp"
             app:boxCornerRadiusBottomStart="32dp"
@@ -103,13 +103,13 @@
             app:hintTextColor="@color/primaryTextColor"
             app:layout_constraintEnd_toEndOf="@id/close"
             app:layout_constraintStart_toStartOf="@id/post_type"
-            app:layout_constraintTop_toBottomOf="@id/location_title">
+            app:layout_constraintTop_toBottomOf="@id/product_title">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_medium"
-                android:inputType="phone"
+                android:inputType="textMultiLine"
                 android:paddingStart="24dp"
                 android:paddingEnd="4dp"
                 android:scrollbarStyle="insideInset"
@@ -121,20 +121,90 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/get_location"
-            android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/product_price"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/get_location"
-            app:drawableTint="@color/primaryTextColor"
-            android:drawableStart="@drawable/location"
-            android:textAllCaps="false"
-            app:backgroundTint="@color/colorBackground"
-            app:cornerRadius="32dp"
+            android:hint="@string/product_price"
+            android:textColorHint="@color/primaryTextColor"
+            app:boxCornerRadiusBottomEnd="32dp"
+            app:boxCornerRadiusBottomStart="32dp"
+            app:boxCornerRadiusTopEnd="32dp"
+            app:boxCornerRadiusTopStart="32dp"
+            app:boxStrokeColor="@color/primaryTextColor"
+            app:boxStrokeErrorColor="@color/colorError"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="1dp"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/primaryTextColor"
+            app:errorIconTint="@color/colorError"
+            app:errorTextColor="@color/colorError"
+            app:helperTextEnabled="false"
+            app:hintTextColor="@color/primaryTextColor"
+            app:layout_constraintEnd_toEndOf="@id/close"
             app:layout_constraintStart_toStartOf="@id/post_type"
-            app:layout_constraintTop_toBottomOf="@id/location_content" />
+            app:layout_constraintTop_toBottomOf="@id/product_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:inputType="numberDecimal"
+                android:paddingStart="24dp"
+                android:paddingEnd="4dp"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:textAlignment="textStart"
+                android:textColor="@color/primaryTextColor"
+                android:textCursorDrawable="@null"
+                android:textSize="12sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/offer_percentage"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/offer_percentage"
+            android:textColorHint="@color/primaryTextColor"
+            app:boxCornerRadiusBottomEnd="32dp"
+            app:boxCornerRadiusBottomStart="32dp"
+            app:boxCornerRadiusTopEnd="32dp"
+            app:boxCornerRadiusTopStart="32dp"
+            app:boxStrokeColor="@color/primaryTextColor"
+            app:boxStrokeErrorColor="@color/colorError"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="1dp"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/primaryTextColor"
+            app:errorIconTint="@color/colorError"
+            app:errorTextColor="@color/colorError"
+            app:helperTextEnabled="false"
+            app:hintTextColor="@color/primaryTextColor"
+            app:layout_constraintEnd_toEndOf="@id/close"
+            app:layout_constraintStart_toStartOf="@id/post_type"
+            app:layout_constraintTop_toBottomOf="@id/product_price">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:inputType="numberDecimal"
+                android:paddingStart="24dp"
+                android:paddingEnd="4dp"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:textAlignment="textStart"
+                android:textColor="@color/primaryTextColor"
+                android:textCursorDrawable="@null"
+                android:textSize="12sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/create_post"
@@ -152,7 +222,7 @@
             android:textColor="@color/colorAccent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/get_location" />
+            app:layout_constraintTop_toBottomOf="@id/offer_percentage" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,13 @@
 package com.belfoapps.qarib.utils;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
 import com.huawei.hmf.tasks.OnFailureListener;
+import com.huawei.hms.analytics.HiAnalyticsInstance;
 import com.huawei.hms.nearby.Nearby;
 import com.huawei.hms.nearby.message.GetOption;
 import com.huawei.hms.nearby.message.Message;
@@ -28,6 +30,7 @@ public class ConnectionsService {
      * *********************************** Declarations
      */
     private Context context;
+    private HiAnalyticsInstance analytics;
     private MutableLiveData<Message> postData;
     private MutableLiveData<Message> messageData;
     private MutableLiveData<Integer> errorData;
@@ -60,6 +63,10 @@ public class ConnectionsService {
         }
     };
     private OnFailureListener failure = e -> {
+        Bundle bundle = new Bundle();
+        bundle.putString("error", e.getMessage());
+        if (analytics != null)
+            analytics.onEvent("Error", bundle);
         if (errorData != null)
             errorData.postValue(Integer.parseInt(e.getMessage().split(":")[0]));
     };
@@ -68,10 +75,11 @@ public class ConnectionsService {
      * *********************************** Constructor
      */
     @Inject
-    public ConnectionsService(@ActivityContext Context context) {
+    public ConnectionsService(@ActivityContext Context context, HiAnalyticsInstance analytics) {
         this.context = context;
         this.my_messages = new ArrayList<>();
         messageEngine = Nearby.getMessageEngine(context);
+        this.analytics = analytics;
     }
 
     /***********************************************************************************************

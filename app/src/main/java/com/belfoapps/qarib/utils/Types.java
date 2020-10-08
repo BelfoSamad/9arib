@@ -5,8 +5,8 @@ public enum Types {
     Message,
     Post,
     //Post Types
+    Offer,
     Contacts,
     SocialMedia,
     Website,
-    Location
 }

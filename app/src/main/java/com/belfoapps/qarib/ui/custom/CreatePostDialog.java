@@ -4,12 +4,9 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,17 +14,11 @@ import androidx.fragment.app.DialogFragment;
 
 import com.belfoapps.qarib.R;
 import com.belfoapps.qarib.databinding.ContactsDialogBinding;
-import com.belfoapps.qarib.databinding.LocationDialogBinding;
+import com.belfoapps.qarib.databinding.OfferDialogBinding;
 import com.belfoapps.qarib.databinding.SocialMediaDialogBinding;
 import com.belfoapps.qarib.databinding.WebsiteDialogBinding;
 import com.belfoapps.qarib.pojo.Post;
-import com.belfoapps.qarib.utils.ResourcesUtils;
 import com.belfoapps.qarib.utils.Types;
-import com.google.android.material.snackbar.Snackbar;
-import com.huawei.hmf.tasks.OnCompleteListener;
-import com.huawei.hmf.tasks.Task;
-import com.huawei.hms.location.FusedLocationProviderClient;
-import com.huawei.hms.location.LocationServices;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -49,7 +40,7 @@ public class CreatePostDialog extends DialogFragment {
     private ContactsDialogBinding cBinding;
     private SocialMediaDialogBinding smBinding;
     private WebsiteDialogBinding wBinding;
-    private LocationDialogBinding lBinding;
+    private OfferDialogBinding lBinding;
     private String type;
 
     /***********************************************************************************************
@@ -95,8 +86,8 @@ public class CreatePostDialog extends DialogFragment {
             case Website:
                 dialog = getWebsiteDialog(savedInstanceState, builder, inflater);
                 break;
-            case Location:
-                dialog = getLocationDialog(savedInstanceState, builder, inflater);
+            case Offer:
+                dialog = getOfferDialog(savedInstanceState, builder, inflater);
                 break;
         }
 
@@ -194,8 +185,8 @@ public class CreatePostDialog extends DialogFragment {
         //Create Post
         smBinding.createPost.setOnClickListener(v -> {
 
-            smBinding.socialMediaTitle.getEditText().setError(null);
-            smBinding.socialMediaContent.getEditText().setError(null);
+            smBinding.socialMediaTitle.setError(null);
+            smBinding.socialMediaContent.setError(null);
 
             if (smBinding.socialMediaTitle.getEditText().getText().toString().equals(""))
                 smBinding.socialMediaTitle.setError(getResources().getString(R.string.title_error));
@@ -205,6 +196,14 @@ public class CreatePostDialog extends DialogFragment {
                 Post post = new Post(null, smBinding.socialMediaContent.getEditText().getText().toString(),
                         System.currentTimeMillis());
                 post.setTitle(smBinding.socialMediaTitle.getEditText().getText().toString());
+                if (!smBinding.facebook.getEditText().getText().equals(""))
+                    post.setFacebook(smBinding.facebook.getEditText().getText().toString());
+                if (!smBinding.twitter.getEditText().getText().equals(""))
+                    post.setFacebook(smBinding.twitter.getEditText().getText().toString());
+                if (!smBinding.linkedin.getEditText().getText().equals(""))
+                    post.setFacebook(smBinding.linkedin.getEditText().getText().toString());
+                if (!smBinding.instagram.getEditText().getText().equals(""))
+                    post.setFacebook(smBinding.instagram.getEditText().getText().toString());
 
                 listener.createPost(post);
             }
@@ -235,9 +234,9 @@ public class CreatePostDialog extends DialogFragment {
 
         //Create Post
         wBinding.createPost.setOnClickListener(v -> {
-            wBinding.websiteTitle.getEditText().setError(null);
-            wBinding.websiteContent.getEditText().setError(null);
-            wBinding.website.getEditText().setError(null);
+            wBinding.websiteTitle.setError(null);
+            wBinding.websiteContent.setError(null);
+            wBinding.website.setError(null);
 
             if (wBinding.websiteTitle.getEditText().getText().toString().equals(""))
                 wBinding.websiteTitle.setError(getResources().getString(R.string.title_error));
@@ -266,62 +265,46 @@ public class CreatePostDialog extends DialogFragment {
         return builder.setView(wBinding.getRoot()).create();
     }
 
-    private Dialog getLocationDialog(Bundle savedInstanceState, AlertDialog.Builder builder, LayoutInflater inflater) {
+    private Dialog getOfferDialog(Bundle savedInstanceState, AlertDialog.Builder builder, LayoutInflater inflater) {
 
         final String[] location = {null};
 
         //Set ViewBinding
-        lBinding = LocationDialogBinding.inflate(inflater, null,
+        lBinding = OfferDialogBinding.inflate(inflater, null,
                 false);
 
         //Set State
         if (savedInstanceState != null) {
-            wBinding.websiteTitle.getEditText().setText(savedInstanceState.getString("Title"));
-            wBinding.websiteContent.getEditText().setText(savedInstanceState.getString("Content"));
-            wBinding.website.getEditText().setText(savedInstanceState.getString("Website"));
+            lBinding.productTitle.getEditText().setText(savedInstanceState.getString("Title"));
+            lBinding.productContent.getEditText().setText(savedInstanceState.getString("Content"));
+            lBinding.productPrice.getEditText().setText(savedInstanceState.getString("Price"));
+            lBinding.offerPercentage.getEditText().setText(savedInstanceState.getString("Percentage"));
         }
 
         //Get Location
-        lBinding.getLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!ResourcesUtils.isLocationEnabled(getContext()))
-                    Snackbar.make(v, "You should turn on Location",
-                            Snackbar.LENGTH_LONG)
-                            .setAction("Turn On", vv -> ResourcesUtils.enableLocation(getContext())).show();
-
-                FusedLocationProviderClient fusedLocationProviderClient = LocationServices
-                        .getFusedLocationProviderClient(getContext());
-                fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
-                    @Override
-                    public void onComplete(Task<Location> task) {
-                        if (task.isSuccessful())
-                            location[0] = task.getResult().toString();
-                        else Toast.makeText(getContext(), "Couldn't Get the Location " + task.getException().getMessage(),
-                                Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });
 
         //Create Post
         lBinding.createPost.setOnClickListener(v -> {
-            lBinding.locationTitle.getEditText().setError(null);
-            lBinding.locationContent.getEditText().setError(null);
+            lBinding.productTitle.setError(null);
+            lBinding.productContent.setError(null);
+            lBinding.productPrice.setError(null);
+            lBinding.offerPercentage.setError(null);
 
-            if (lBinding.locationTitle.getEditText().getText().toString().equals(""))
-                lBinding.locationTitle.setError(getResources().getString(R.string.title_error));
-            else if (lBinding.locationContent.getEditText().getText().toString().equals(""))
-                lBinding.locationContent.setError(getResources().getString(R.string.content_error));
-            else if (location[0] == null)
-                lBinding.getLocation.setError(getResources().getString(R.string.location_error));
-            else if (websiteNonValid(wBinding.website.getEditText().getText().toString()))
-                wBinding.website.setError(getResources().getString(R.string.website_not_valid));
+            if (lBinding.productTitle.getEditText().getText().toString().equals(""))
+                lBinding.productTitle.setError(getResources().getString(R.string.product_title_error));
+            else if (lBinding.productContent.getEditText().getText().toString().equals(""))
+                lBinding.productContent.setError(getResources().getString(R.string.product_content_error));
+            else if (lBinding.productPrice.getEditText().getText().toString().equals(""))
+                lBinding.productPrice.setError(getResources().getString(R.string.product_price_error));
+            else if (lBinding.offerPercentage.getEditText().getText().toString().equals(""))
+                lBinding.offerPercentage.setError(getResources().getString(R.string.product_percentage_error));
             else {
-                Post post = new Post(null, wBinding.websiteContent.getEditText().getText().toString(),
+                Post post = new Post(null, lBinding.productContent.getEditText().getText().toString(),
                         System.currentTimeMillis());
-                post.setTitle(wBinding.websiteTitle.getEditText().getText().toString());
-                post.setWebsite(wBinding.website.getEditText().getText().toString());
+                post.setTitle(lBinding.productTitle.getEditText().getText().toString());
+                post.setPrice(Integer.parseInt(lBinding.productPrice.getEditText().getText().toString()));
+                post.setPrice(Integer.parseInt(lBinding.offerPercentage.getEditText().getText().toString()));
+
 
                 listener.createPost(post);
             }
@@ -331,7 +314,7 @@ public class CreatePostDialog extends DialogFragment {
         lBinding.close.setOnClickListener(v -> dismiss());
 
         //Request focust
-        lBinding.locationTitle.getEditText().requestFocus();
+        lBinding.productTitle.getEditText().requestFocus();
 
         return builder.setView(lBinding.getRoot()).create();
     }

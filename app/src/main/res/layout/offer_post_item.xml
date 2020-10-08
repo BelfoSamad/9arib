@@ -105,74 +105,18 @@
             app:layout_constraintTop_toBottomOf="@id/post_title"
             tools:text="hey there, this is the first goddamn post, and it looks so fucking  good mate..." />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/twitter"
+        <TextView
+            android:id="@+id/product_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/montserrat_medium"
-            android:text="@string/twitter"
-            android:textAllCaps="false"
-            android:textColor="@color/primaryTextColor"
-            app:backgroundTint="@color/colorButton"
-            app:cornerRadius="32dp"
-            app:icon="@drawable/twitter"
-            app:iconTint="@null"
-            app:layout_constraintBottom_toTopOf="@id/facebook"
-            app:layout_constraintStart_toStartOf="@id/author_type"
-            app:layout_constraintTop_toBottomOf="@id/post_content" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/facebook"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/montserrat_medium"
-            android:text="@string/facebook"
-            android:textAllCaps="false"
-            android:textColor="@color/primaryTextColor"
-            app:backgroundTint="@color/colorButton"
-            app:cornerRadius="32dp"
-            app:icon="@drawable/facebook"
-            app:iconTint="@null"
-            app:layout_constraintBottom_toTopOf="@id/instagram"
-            app:layout_constraintStart_toStartOf="@id/author_type"
-            app:layout_constraintTop_toBottomOf="@id/twitter" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/instagram"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/montserrat_medium"
-            android:text="@string/instagram"
-            android:textAllCaps="false"
-            android:textColor="@color/primaryTextColor"
-            app:backgroundTint="@color/colorButton"
-            app:cornerRadius="32dp"
-            app:icon="@drawable/instagram"
-            app:iconTint="@null"
-            app:layout_constraintBottom_toTopOf="@id/linkedin"
-            app:layout_constraintStart_toStartOf="@id/author_type"
-            app:layout_constraintTop_toBottomOf="@id/facebook" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/linkedin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
-            android:fontFamily="@font/montserrat_medium"
-            android:text="@string/linkedin"
+            android:fontFamily="@font/montserrat_bold"
             android:textAllCaps="false"
             android:textColor="@color/primaryTextColor"
-            app:backgroundTint="@color/colorButton"
-            app:cornerRadius="32dp"
-            app:icon="@drawable/linkedin"
-            app:iconTint="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/author_type"
-            app:layout_constraintTop_toBottomOf="@id/instagram" />
+            app:layout_constraintTop_toBottomOf="@id/post_content" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
