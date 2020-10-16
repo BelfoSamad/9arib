@@ -15,9 +15,6 @@ import com.belfoapps.qarib.base.MainListener;
 import com.belfoapps.qarib.utils.Constants;
 import com.belfoapps.qarib.utils.ResourcesUtils;
 import com.belfoapps.qarib.viewmodels.MainViewModel;
-import com.huawei.hms.analytics.HiAnalytics;
-import com.huawei.hms.analytics.HiAnalyticsInstance;
-import com.huawei.hms.analytics.HiAnalyticsTools;
 import com.tbruyelle.rxpermissions3.RxPermissions;
 
 import dagger.hilt.android.AndroidEntryPoint;

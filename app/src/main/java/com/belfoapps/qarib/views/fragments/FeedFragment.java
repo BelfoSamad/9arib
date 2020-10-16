@@ -32,17 +32,15 @@ import com.belfoapps.qarib.ui.custom.CreatePostDialog;
 import com.belfoapps.qarib.utils.ResourcesUtils;
 import com.belfoapps.qarib.viewmodels.FeedViewModel;
 import com.belfoapps.qarib.views.MainActivity;
+import com.google.android.gms.nearby.messages.Message;
+import com.google.android.gms.nearby.messages.NearbyMessagesStatusCodes;
 import com.google.android.material.snackbar.Snackbar;
-import com.huawei.hms.nearby.StatusCode;
-import com.huawei.hms.nearby.message.Message;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 public class FeedFragment extends Fragment implements CreatePostDialog.PostCreationListener {
     private static final String TAG = "FeedFragment";
-    public static final String RV_STATE = "RecyclerView_Status";
     public static final String POST = "post";
 
     /***********************************************************************************************
@@ -51,7 +49,7 @@ public class FeedFragment extends Fragment implements CreatePostDialog.PostCreat
     private PostsAdapter mAdapter;
     private FeedFragmentBinding mBinding;
     private MainListener listener;
-    private Observer<Message> observer = new Observer<Message>() {
+    private final Observer<Message> observer = new Observer<Message>() {
         @Override
         public void onChanged(Message message) {
             String text = new String(message.getContent()).replaceAll("\\\\", "");
@@ -70,7 +68,7 @@ public class FeedFragment extends Fragment implements CreatePostDialog.PostCreat
             }
         }
     };
-    private Observer<Post> postObserver = post -> {
+    private final Observer<Post> postObserver = post -> {
         if (post.getContent() == null) {
             mAdapter.removePost(post);
             if (mAdapter.getItemCount() == 0)
@@ -80,29 +78,19 @@ public class FeedFragment extends Fragment implements CreatePostDialog.PostCreat
             mBinding.rippleBackground.stopRippleAnimation();
         }
     };
-    private Observer<Integer> errorObserver = error -> {
+    private final Observer<Integer> errorObserver = error -> {
         switch (error) {
-            case StatusCode.STATUS_MISSING_SETTING_LOCATION_ON:
-                Snackbar.make(mBinding.getRoot(), getResources().getString(R.string.turn_on_location),
-                        Snackbar.LENGTH_LONG)
-                        .setAction("Turn On", v -> ResourcesUtils.enableLocation(requireContext())).show();
-                break;
-            case StatusCode.STATUS_AIRPLANE_MODE_MUST_BE_OFF:
-                Snackbar.make(mBinding.getRoot(), getResources().getString(R.string.plane_mode),
-                        Snackbar.LENGTH_LONG)
-                        .show();
-                break;
-            case StatusCode.STATUS_MESSAGE_BLUETOOTH_OFF:
+            case NearbyMessagesStatusCodes.BLUETOOTH_OFF:
                 Snackbar.make(mBinding.getRoot(), getResources().getString(R.string.turn_on_blutooth),
                         Snackbar.LENGTH_LONG)
                         .setAction("Turn On", v -> ResourcesUtils.enableBluetooth(requireContext())).show();
                 break;
-            case StatusCode.STATUS_MISSING_PERMISSION_ACCESS_COARSE_LOCATION:
+            case NearbyMessagesStatusCodes.MISSING_PERMISSIONS:
                 Snackbar.make(mBinding.getRoot(), getResources().getString(R.string.require_permission),
                         Snackbar.LENGTH_LONG)
                         .setAction("Request", v -> listener.requestPermissions()).show();
                 break;
-            case StatusCode.STATUS_NO_NETWORK:
+            case NearbyMessagesStatusCodes.NETWORK_ERROR:
                 Snackbar.make(mBinding.getRoot(), getResources().getString(R.string.wifi_error),
                         Snackbar.LENGTH_LONG)
                         .show();
@@ -159,14 +147,11 @@ public class FeedFragment extends Fragment implements CreatePostDialog.PostCreat
             mBinding.rippleBackground.startRippleAnimation();
 
             //Set RecyclerView
-            mViewModel.getPostsData().observe(getViewLifecycleOwner(), new Observer<ArrayList<Post>>() {
-                @Override
-                public void onChanged(ArrayList<Post> posts) {
-                    Collections.reverse(posts);
-                    initRecyclerView(posts);
-                    if (posts.size() > 0)
-                        mBinding.rippleBackground.stopRippleAnimation();
-                }
+            mViewModel.getPostsData().observe(getViewLifecycleOwner(), posts -> {
+                Collections.reverse(posts);
+                initRecyclerView(posts);
+                if (posts.size() > 0)
+                    mBinding.rippleBackground.stopRippleAnimation();
             });
             mViewModel.getSavedPosts();
         }

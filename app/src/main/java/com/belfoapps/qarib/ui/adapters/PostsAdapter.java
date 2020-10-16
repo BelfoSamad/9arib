@@ -148,16 +148,14 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                     holder.email.setText(posts.get(position).getEmail());
                     holder.email.setOnClickListener(v -> {
                         Intent intent = new Intent(Intent.ACTION_SEND);
+                        intent.setType("message/rfc822");
                         intent.putExtra(Intent.EXTRA_EMAIL,
                                 new String[]{((MaterialButton) v).getText().toString()});
                         context.startActivity(Intent.createChooser(intent, "Send email"));
                     });
-                    holder.email.setOnLongClickListener(new View.OnLongClickListener() {
-                        @Override
-                        public boolean onLongClick(View v) {
-                            copyContent(((MaterialButton) v).getText().toString());
-                            return true;
-                        }
+                    holder.email.setOnLongClickListener(v -> {
+                        copyContent(((MaterialButton) v).getText().toString());
+                        return true;
                     });
 
                     holder.phone.setText(posts.get(position).getPhone());
@@ -166,12 +164,9 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                         intent.setData(Uri.parse("tel:" + ((MaterialButton) v).getText().toString()));
                         context.startActivity(intent);
                     });
-                    holder.phone.setOnLongClickListener(new View.OnLongClickListener() {
-                        @Override
-                        public boolean onLongClick(View v) {
-                            copyContent(((MaterialButton) v).getText().toString());
-                            return true;
-                        }
+                    holder.phone.setOnLongClickListener(v -> {
+                        copyContent(((MaterialButton) v).getText().toString());
+                        return true;
                     });
                     break;
                 case SOCIAL_MEDIA:
@@ -216,17 +211,14 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                                 Uri.parse(url));
                         context.startActivity(browserIntent);
                     });
-                    holder.website.setOnLongClickListener(new View.OnLongClickListener() {
-                        @Override
-                        public boolean onLongClick(View v) {
-                            copyContent(((MaterialButton) v).getText().toString());
-                            return true;
-                        }
+                    holder.website.setOnLongClickListener(v -> {
+                        copyContent(((MaterialButton) v).getText().toString());
+                        return true;
                     });
                     break;
                 case OFFER:
                     double new_price;
-                    if (posts.get(position).getPercentage() != 0)
+                    if (posts.get(position).getPercentage() > 0)
                         new_price = posts.get(position).getPrice() -
                                 (posts.get(position).getPrice() * ((float) posts.get(position).getPercentage() / 100));
                     else new_price = posts.get(position).getPrice();

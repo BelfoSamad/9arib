@@ -15,8 +15,7 @@ import com.belfoapps.qarib.pojo.Post;
 import com.belfoapps.qarib.utils.ConnectionsService;
 import com.belfoapps.qarib.utils.JsonUtils;
 import com.belfoapps.qarib.utils.Types;
-import com.huawei.hms.analytics.HiAnalyticsInstance;
-import com.huawei.hms.nearby.message.Message;
+import com.google.android.gms.nearby.messages.Message;
 
 import java.util.ArrayList;
 
@@ -28,7 +27,6 @@ public class FeedViewModel extends ViewModel {
      */
     private SharedPreferencesHelper mSharedPrefs;
     private AppDatabase mDb;
-    private HiAnalyticsInstance analytics;
     private ConnectionsService connections;
     private MutableLiveData<Post> postData;
     private MutableLiveData<ArrayList<Post>> postsData;

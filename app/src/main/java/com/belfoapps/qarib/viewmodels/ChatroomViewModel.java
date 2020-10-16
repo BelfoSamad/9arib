@@ -10,7 +10,7 @@ import com.belfoapps.qarib.pojo.NearMessage;
 import com.belfoapps.qarib.utils.ConnectionsService;
 import com.belfoapps.qarib.utils.JsonUtils;
 import com.belfoapps.qarib.utils.Types;
-import com.huawei.hms.nearby.message.Message;
+import com.google.android.gms.nearby.messages.Message;
 import com.stfalcon.chatkit.messages.MessagesListAdapter;
 
 public class ChatroomViewModel extends ViewModel {

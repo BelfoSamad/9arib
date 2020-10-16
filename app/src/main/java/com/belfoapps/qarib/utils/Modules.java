@@ -6,9 +6,6 @@ import androidx.room.Room;
 
 import com.belfoapps.qarib.base.AppDatabase;
 import com.belfoapps.qarib.models.SharedPreferencesHelper;
-import com.huawei.hms.analytics.HiAnalytics;
-import com.huawei.hms.analytics.HiAnalyticsInstance;
-import com.huawei.hms.analytics.HiAnalyticsTools;
 
 import dagger.Module;
 import dagger.Provides;
@@ -31,11 +28,5 @@ public class Modules {
     public static AppDatabase providesAppDatabase(@ApplicationContext Context context) {
         return Room.databaseBuilder(context,
                 AppDatabase.class, DATABASE_NAME).build();
-    }
-
-    @Provides
-    public static HiAnalyticsInstance providesInstance(@ApplicationContext Context context) {
-        HiAnalyticsTools.enableLog();
-        return HiAnalytics.getInstance(context);
     }
 }

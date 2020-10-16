@@ -196,14 +196,15 @@ public class CreatePostDialog extends DialogFragment {
                 Post post = new Post(null, smBinding.socialMediaContent.getEditText().getText().toString(),
                         System.currentTimeMillis());
                 post.setTitle(smBinding.socialMediaTitle.getEditText().getText().toString());
+
                 if (!smBinding.facebook.getEditText().getText().equals(""))
                     post.setFacebook(smBinding.facebook.getEditText().getText().toString());
                 if (!smBinding.twitter.getEditText().getText().equals(""))
-                    post.setFacebook(smBinding.twitter.getEditText().getText().toString());
+                    post.setTwitter(smBinding.twitter.getEditText().getText().toString());
                 if (!smBinding.linkedin.getEditText().getText().equals(""))
-                    post.setFacebook(smBinding.linkedin.getEditText().getText().toString());
+                    post.setLinkedin(smBinding.linkedin.getEditText().getText().toString());
                 if (!smBinding.instagram.getEditText().getText().equals(""))
-                    post.setFacebook(smBinding.instagram.getEditText().getText().toString());
+                    post.setInstagram(smBinding.instagram.getEditText().getText().toString());
 
                 listener.createPost(post);
             }
@@ -303,7 +304,7 @@ public class CreatePostDialog extends DialogFragment {
                         System.currentTimeMillis());
                 post.setTitle(lBinding.productTitle.getEditText().getText().toString());
                 post.setPrice(Integer.parseInt(lBinding.productPrice.getEditText().getText().toString()));
-                post.setPrice(Integer.parseInt(lBinding.offerPercentage.getEditText().getText().toString()));
+                post.setPercentage(Integer.parseInt(lBinding.offerPercentage.getEditText().getText().toString()));
 
 
                 listener.createPost(post);

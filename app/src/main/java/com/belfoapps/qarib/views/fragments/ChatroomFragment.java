@@ -18,7 +18,7 @@ import com.belfoapps.qarib.databinding.ChatroomFragmentBinding;
 import com.belfoapps.qarib.pojo.NearMessage;
 import com.belfoapps.qarib.viewmodels.ChatroomViewModel;
 import com.belfoapps.qarib.views.MainActivity;
-import com.huawei.hms.nearby.message.Message;
+import com.google.android.gms.nearby.messages.Message;
 import com.stfalcon.chatkit.messages.MessagesListAdapter;
 
 public class ChatroomFragment extends Fragment {
