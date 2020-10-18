@@ -34,7 +34,7 @@
             app:layout_constraintBottom_toBottomOf="@id/post_type"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/post_type"
-            app:tint="@color/colorAccent"
+            app:tint="@color/color2Accent"
             android:contentDescription="@string/close" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -215,11 +215,11 @@
             android:layout_marginBottom="16dp"
             android:background="@android:color/transparent"
             android:drawableEnd="@drawable/post_small"
-            app:drawableTint="@color/colorAccent"
+            app:drawableTint="@color/color2Accent"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/create_post"
             android:textAllCaps="false"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/color2Accent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/offer_percentage" />

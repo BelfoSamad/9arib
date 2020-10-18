@@ -33,23 +33,32 @@
 
     <!-- Create Party Options -->
     <string-array name="options_titles">
+        <item>SOS</item>
         <item>Offer</item>
         <item>Contacts</item>
-        <item>Social Media</item>
         <item>Website</item>
+        <item>Social Media</item>
     </string-array>
     <integer-array name="options_images">
         <item>@drawable/offer</item>
+        <item>@drawable/offer</item>
         <item>@drawable/contacts</item>
-        <item>@drawable/social_media</item>
         <item>@drawable/website</item>
+        <item>@drawable/social_media</item>
     </integer-array>
-    <integer-array name="options_colors">
-        <item>@color/color_1</item>
-        <item>@color/color_2</item>
-        <item>@color/color_3</item>
-        <item>@color/color_4</item>
-        <item>@color/color_5</item>
+    <integer-array name="options_primary_colors">
+        <item>@color/color1Primary</item>
+        <item>@color/color2Primary</item>
+        <item>@color/color3Primary</item>
+        <item>@color/color4Primary</item>
+        <item>@color/color5Primary</item>
+    </integer-array>
+    <integer-array name="options_accent_colors">
+        <item>@color/color1Accent</item>
+        <item>@color/color2Accent</item>
+        <item>@color/color3Accent</item>
+        <item>@color/color4Accent</item>
+        <item>@color/color5Accent</item>
     </integer-array>
 
 
@@ -135,5 +144,6 @@
     <string name="facebook_handle">Your Facebook Handle</string>
     <string name="instagram_handle">Your Instagram Handle</string>
     <string name="linkedin_handle">Your Linkedin Handle</string>
+    <string name="profile">Profile</string>
 
 </resources>

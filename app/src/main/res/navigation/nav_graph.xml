@@ -35,10 +35,27 @@
         <action
             android:id="@+id/chatroom"
             app:destination="@id/chatroomFragment" />
+        <action
+            android:id="@+id/profile"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/chatroomFragment"
         android:name="com.belfoapps.qarib.views.fragments.ChatroomFragment"
         android:label="chatroom_fragment"
-        tools:layout="@layout/chatroom_fragment" />
+        tools:layout="@layout/chatroom_fragment" >
+        <action
+            android:id="@+id/private_chatroom"
+            app:destination="@id/privateChatroomFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.belfoapps.qarib.views.fragments.ProfileFragment"
+        android:label="profile_fragment"
+        tools:layout="@layout/profile_fragment" />
+    <fragment
+        android:id="@+id/privateChatroomFragment"
+        android:name="com.belfoapps.qarib.views.fragments.PrivateChatroomFragment"
+        android:label="private_chatroom_fragment"
+        tools:layout="@layout/private_chatroom_fragment" />
 </navigation>

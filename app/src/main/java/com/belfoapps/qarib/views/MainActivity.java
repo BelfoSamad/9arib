@@ -114,8 +114,20 @@ public class MainActivity extends AppCompatActivity implements MainListener {
     }
 
     @Override
+    public void profile() {
+        Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.profile);
+    }
+
+    @Override
     public void chatroom() {
         Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.chatroom);
+    }
+
+    @Override
+    public void privateChatroom(String chatroom) {
+        Bundle bundle = new Bundle();
+        bundle.putString("chatroom", chatroom);
+        Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.private_chatroom, bundle);
     }
 
     @Override

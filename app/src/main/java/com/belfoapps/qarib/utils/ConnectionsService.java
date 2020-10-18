@@ -29,13 +29,13 @@ public class ConnectionsService {
     /***********************************************************************************************
      * *********************************** Declarations
      */
-    private Context context;
+    private final Context context;
     private MutableLiveData<Message> postData;
     private MutableLiveData<Message> messageData;
     private MutableLiveData<Integer> errorData;
-    private MessagesClient messageEngine;
-    private ArrayList<Message> my_messages;
-    private MessageListener messagesHandler = new MessageListener() {
+    private final MessagesClient messageEngine;
+    private final ArrayList<Message> my_messages;
+    private final MessageListener messagesHandler = new MessageListener() {
         @Override
         public void onFound(Message message) {
             super.onFound(message);
@@ -48,7 +48,7 @@ public class ConnectionsService {
             super.onLost(message);
         }
     };
-    private MessageListener postsHandler = new MessageListener() {
+    private final MessageListener postsHandler = new MessageListener() {
         @Override
         public void onFound(Message message) {
             super.onFound(message);
@@ -61,7 +61,7 @@ public class ConnectionsService {
             super.onLost(message);
         }
     };
-    private OnFailureListener failure = e -> {
+    private final OnFailureListener failure = e -> {
         Bundle bundle = new Bundle();
         bundle.putString("error", e.getMessage());
         if (errorData != null)

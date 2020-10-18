@@ -10,7 +10,11 @@ public interface MainListener {
 
     void feed();
 
+    void profile();
+
     void chatroom();
+
+    void privateChatroom(String chatroom);
 
     void goBack();
 }

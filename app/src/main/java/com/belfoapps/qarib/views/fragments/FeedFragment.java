@@ -2,6 +2,7 @@ package com.belfoapps.qarib.views.fragments;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.Editable;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -205,13 +207,18 @@ public class FeedFragment extends Fragment implements CreatePostDialog.PostCreat
     private void addCreateOptions() {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         TypedArray imgs = getResources().obtainTypedArray(R.array.options_images);
-        TypedArray colors = getResources().obtainTypedArray(R.array.options_colors);
+        TypedArray colors = getResources().obtainTypedArray(R.array.options_primary_colors);
+        TypedArray accents = getResources().obtainTypedArray(R.array.options_accent_colors);
         for (int i = 0; i < getResources().getStringArray(R.array.options_titles).length; i++) {
             View option = inflater.inflate(R.layout.create_post_item, mBinding.createPostsRecyclerviewContainer,
                     false);
             //Bind Content
             ((ImageView) option.findViewById(R.id.create_post_illustration)).setImageResource(imgs.getResourceId(i, -1));
+            ((ImageView) option.findViewById(R.id.create_post_illustration)).setColorFilter(ContextCompat.getColor(getContext(),
+                    accents.getResourceId(i, -1)));
             ((TextView) option.findViewById(R.id.create_post_title)).setText(getResources().getStringArray(R.array.options_titles)[i]);
+            ((TextView) option.findViewById(R.id.create_post_title)).setTextColor(ContextCompat.getColor(getContext(),
+                    accents.getResourceId(i, -1)));
             ((CardView) option.findViewById(R.id.create_post_container))
                     .setCardBackgroundColor(getResources().getColor(colors.getResourceId(i, -1)));
 
@@ -226,6 +233,7 @@ public class FeedFragment extends Fragment implements CreatePostDialog.PostCreat
 
         imgs.recycle();
         colors.recycle();
+        accents.recycle();
     }
 
     private void prepareInputUi() {

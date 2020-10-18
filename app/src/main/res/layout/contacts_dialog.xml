@@ -34,7 +34,7 @@
             app:layout_constraintBottom_toBottomOf="@id/post_type"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/post_type"
-            app:tint="@color/colorAccent"
+            app:tint="@color/color3Accent"
             android:contentDescription="@string/close" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -219,12 +219,12 @@
             android:layout_marginBottom="16dp"
             android:background="@android:color/transparent"
             android:drawableEnd="@drawable/post_small"
-            app:drawableTint="@color/colorAccent"
+            app:drawableTint="@color/color3Accent"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/create_post"
             android:textSize="18sp"
             android:textAllCaps="false"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/color3Accent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/contacts_email" />

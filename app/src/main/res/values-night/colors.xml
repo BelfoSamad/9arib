@@ -2,21 +2,29 @@
 <resources>
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#020202</color>
-    <color name="colorAccent">#6a81f5</color>
-    <color name="colorCardAccent">#788df8</color>
+    <color name="colorAccent">#22868c</color>
+    <color name="colorCardAccent">#01140f</color>
     <color name="colorError">#e97776</color>
 
     <color name="colorBackground">#020202</color>
-    <color name="colorCard">#1b1b1b</color>
-    <color name="colorButton">#474747</color>
+    <color name="colorCard">#111111</color>
+    <color name="colorButton">#444444</color>
     <color name="primaryTextColor">#FFFFFF</color>
     <color name="secondaryTextColor">#555555</color>
 
-    <color name="color_1">#18a7f0</color>
-    <color name="color_2">#f5c938</color>
-    <color name="color_3">#ed4f32</color>
-    <color name="color_4">#ae3ddb</color>
-    <color name="color_5">#1ad6a3</color>
+    <color name="color1Primary">#1a0002</color>
+    <color name="color2Primary">#021301</color>
+    <color name="color3Primary">#110000</color>
+    <color name="color4Primary">#11131b</color>
+    <color name="color5Primary">#100122</color>
+    <color name="color6Primary">#001c30</color>
+
+    <color name="color1Accent">#d24a3d</color>
+    <color name="color2Accent">#30a351</color>
+    <color name="color3Accent">#a07045</color>
+    <color name="color4Accent">#35407c</color>
+    <color name="color5Accent">#8a5194</color>
+    <color name="color6Accent">#5c90d5</color>
 
     <color name="mtrl_textinput_default_box_stroke_color">#FFFFFF</color>
 </resources>

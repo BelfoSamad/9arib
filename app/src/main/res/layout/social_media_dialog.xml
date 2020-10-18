@@ -35,7 +35,7 @@
             app:layout_constraintBottom_toBottomOf="@id/post_type"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/post_type"
-            app:tint="@color/colorAccent" />
+            app:tint="@color/color5Accent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/social_media_title"
@@ -308,8 +308,8 @@
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/create_post"
             android:textAllCaps="false"
-            android:textColor="@color/colorAccent"
-            app:drawableTint="@color/colorAccent"
+            android:textColor="@color/color5Accent"
+            app:drawableTint="@color/color5Accent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/linkedin" />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,15 +12,32 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/logo"
-            android:layout_width="136dp"
-            android:layout_height="52dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_launcher"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/go_profile"
+            app:layout_constraintBottom_toBottomOf="@id/go_profile"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/go_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:src="@drawable/logo"
-            android:textColor="@color/primaryTextColor"
-            android:textSize="40sp"
+            android:text="@string/profile"
+            app:elevation="0dp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/montserrat_bold"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="14sp"
+            app:cornerRadius="32dp"
+            android:background="@android:color/transparent"
+            app:icon="@drawable/person"
+            app:iconTint="@color/colorAccent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,22 +45,22 @@
             android:id="@+id/go_chatroom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:fontFamily="@font/montserrat_bold"
             android:paddingTop="4dp"
+            app:iconGravity="end"
+            app:icon="@drawable/next_small"
             android:paddingBottom="4dp"
+            app:elevation="0dp"
             android:text="@string/chatroom"
             android:textAllCaps="false"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorAccent"
             android:textSize="14sp"
-            app:backgroundTint="@color/colorAccent"
+            android:background="@android:color/transparent"
             app:cornerRadius="32dp"
-            app:icon="@drawable/next"
-            app:iconGravity="end"
-            app:iconTint="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="@id/logo"
+            app:iconTint="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="@id/go_profile"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/logo" />
+            app:layout_constraintTop_toTopOf="@id/go_profile" />
 
         <HorizontalScrollView
             android:id="@+id/create_extra_post"
@@ -56,7 +73,7 @@
             android:scrollbarSize="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/logo">
+            app:layout_constraintTop_toBottomOf="@id/go_profile">
 
             <LinearLayout
                 android:id="@+id/create_posts_recyclerview_container"
@@ -70,61 +87,61 @@
             android:id="@+id/feed_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:autofillHints="What's up"
             android:background="@drawable/input_background"
-            android:fontFamily="@font/montserrat_medium"
+            android:fontFamily="@font/montserrat_bold"
             android:hint="@string/whats_up"
             android:inputType="textMultiLine"
             android:paddingStart="24dp"
-            android:paddingTop="24dp"
+            android:paddingTop="32dp"
             android:paddingEnd="8dp"
-            android:paddingBottom="24dp"
+            android:paddingBottom="32dp"
             android:textSize="16sp"
-            app:layout_constraintEnd_toStartOf="@id/send_post"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/create_extra_post" />
 
-        <ImageButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/send_post"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
+            android:layout_marginTop="8dp"
             android:background="@android:color/transparent"
             android:fontFamily="@font/montserrat_bold"
-            android:src="@drawable/post"
+            app:icon="@drawable/post"
             android:text="@string/post"
             android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:tint="@color/colorAccent"
+            android:textColor="@color/colorAccent"
+            app:iconTint="@color/colorAccent"
+            app:iconGravity="end"
             app:cornerRadius="32dp"
             app:drawableTint="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="@id/feed_input"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/feed_input" />
+            app:layout_constraintEnd_toEndOf="@id/feed_input"
+            app:layout_constraintTop_toBottomOf="@id/feed_input" />
 
         <com.skyfishjy.library.RippleBackground
             android:id="@+id/ripple_background"
             android:layout_width="match_parent"
             android:layout_height="350dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/feed_input"
-            app:rb_color="#336a81f5"
+            app:layout_constraintTop_toBottomOf="@id/send_post"
+            app:rb_color="#3322868c"
             app:rb_duration="3000"
             app:rb_radius="32dp"
             app:rb_rippleAmount="4"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="8dp"
             app:rb_scale="6" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/posts_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="8dp"
             android:nestedScrollingEnabled="false"
-            app:layout_constraintTop_toBottomOf="@id/feed_input" />
+            app:layout_constraintTop_toBottomOf="@id/send_post" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</androidx.core.widget.NestedScrollView>

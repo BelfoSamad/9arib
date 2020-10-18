@@ -2,8 +2,8 @@
 <resources>
     <color name="colorPrimary">#020202</color>
     <color name="colorPrimaryDark">#020202</color>
-    <color name="colorAccent">#6a81f5</color>
-    <color name="colorCardAccent">#788df8</color>
+    <color name="colorAccent">#22868c</color>
+    <color name="colorCardAccent">#e8fbff</color>
     <color name="colorError">#e97776</color>
 
     <color name="colorBackground">#F4F5FA</color>
@@ -12,11 +12,19 @@
     <color name="primaryTextColor">#020202</color>
     <color name="secondaryTextColor">#DFDEE4</color>
 
-    <color name="color_1">#bee7fc</color>
-    <color name="color_2">#fbe497</color>
-    <color name="color_3">#f8a697</color>
-    <color name="color_4">#d3b2e0</color>
-    <color name="color_5">#7fd8c0</color>
+    <color name="color1Primary">#fee9e4</color>
+    <color name="color2Primary">#e6f7ed</color>
+    <color name="color3Primary">#fcfbe6</color>
+    <color name="color4Primary">#edebf8</color>
+    <color name="color5Primary">#f7ebff</color>
+    <color name="color6Primary">#dcebff</color>
+
+    <color name="color1Accent">#d24a3d</color>
+    <color name="color2Accent">#30a351</color>
+    <color name="color3Accent">#a07045</color>
+    <color name="color4Accent">#35407c</color>
+    <color name="color5Accent">#8a5194</color>
+    <color name="color6Accent">#5c90d5</color>
 
     <color name="mtrl_textinput_default_box_stroke_color">#020202</color>
 </resources>

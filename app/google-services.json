@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "497578375701",
+    "firebase_url": "https://arib-d5802.firebaseio.com",
+    "project_id": "arib-d5802",
+    "storage_bucket": "arib-d5802.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:497578375701:android:7ac2e7c5718bf82cd8ec1c",
+        "android_client_info": {
+          "package_name": "com.belfoapps.qarib"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "497578375701-fqv4q5j0b482gugi1vb0nfahbdb9j9as.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbiMpEQeqnxtiMaWo6ZjUYcHFX8K-lHD4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "497578375701-fqv4q5j0b482gugi1vb0nfahbdb9j9as.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
